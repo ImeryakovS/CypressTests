@@ -17,5 +17,7 @@ class DashboardPage {
         additionalactions.forEach(selector => navigate(selector));
     }
 }
+//Объединить SearchFor и OpenDashboard в общий метод под названием "Create Dashboard", поменять тест, чтобы он создавал дашборд
+//Далее создать тест, который будет удалять дашборд
 
 module.exports = { DashboardPage };
