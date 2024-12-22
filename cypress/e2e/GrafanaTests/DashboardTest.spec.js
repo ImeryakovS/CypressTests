@@ -11,4 +11,5 @@ describe ("Test for dashboard", () => {
         DashboardPage.openDashboard("Last 15 minutes")
         DashboardPage.completeAddtitionalActions();
     })
-})
+}) //Добавляем тест на сохранение дашборда и отдельный тест на удаление всех дашбордов.
+//В тесте нужно учесть, что при сохранении дашборда нужно рандоминизировать текст
