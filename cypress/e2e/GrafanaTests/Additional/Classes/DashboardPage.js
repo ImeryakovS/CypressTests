@@ -14,9 +14,6 @@ class DashboardPage {
     static openDashboard(timeRange) {
         actions.forEach(selector => navigate(selector));
         ClickonContains(timeRange);
-    }
-
-    static completeAddtitionalActions() {
         additionalactions.forEach(selector => navigate(selector));
     }
 }
