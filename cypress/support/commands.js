@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import 'cypress-real-events';
 
 const {loginSelectors} = require("../e2e/GrafanaTests/Additional/Selectors/LoginSelectors");
 Cypress.Commands.add('login', (email, password) => {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tiny-server",
-    "wget" : "\"C:/ProgramData/chocolatey/bin/wget.exe\"",
+    "wget": "\"C:/ProgramData/chocolatey/bin/wget.exe\"",
     "cypress": "cypress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.16.1",
+    "cypress-real-events": "^1.13.0",
     "lodash": "^4.17.21",
     "node-wget": "^0.4.3",
     "tiny-server": "^1.1.1"

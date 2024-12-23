@@ -6,7 +6,11 @@ describe ("Test for dashboard", () => {
         cy.login('Sergeytest', 'test');
     })
 
-    it.only ("User sucessfully created and deleted new dashboard", () => {
+    it ("User successfully created new dashboard", () => {
         DashboardPage.createDashboard("dashboard","Last 15 minutes")
+    })
+
+    it ("User successfully deleted all dashboards", () => {
+        DashboardPage.deleteAllDashboards()
     })
 })

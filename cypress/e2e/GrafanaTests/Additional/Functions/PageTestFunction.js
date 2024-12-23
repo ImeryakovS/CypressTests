@@ -26,4 +26,4 @@ function navigateLinks (links) { //переходим по ссылкам в ц�
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
 }
 
-module.exports = { expandSection, UsingSearch, navigateLinks, goToLink }; //удалил navigateAndVerify
+module.exports = { expandSection, UsingSearch, navigateLinks, goToLink };

@@ -2,6 +2,7 @@ const { DashboardSelectors } = require("../Selectors/DashboardSelectors");
 const { containText } = require('./LoginTestFunction.js')
 const {random} = require("lodash");
 const { mainSelectors } = require('../Selectors/MainSelectors.js')
+const {goToLink} = require("./PageTestFunction");
 
 function navigate (selector) {
     cy.get(selector)
@@ -29,4 +30,12 @@ function saveDashboard () {
     cy.get (mainSelectors.home).click()
 }
 
-module.exports = { navigate, ClickonContains, saveDashboard };
+function deleteAllDashboards () {
+    goToLink('http://localhost:3000/dashboards');
+    cy.get(DashboardSelectors.childCheckboxes).click({ multiple: true, force: true})
+    cy.get(DashboardSelectors.deleteDashboards).click()
+    cy.get(DashboardSelectors.confirmDeleteDashboard).click().type('Delete')
+    cy.get(DashboardSelectors.finalDeleteDashboards).click()
+}
+
+module.exports = { navigate, ClickonContains, saveDashboard, deleteAllDashboards };

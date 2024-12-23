@@ -1,6 +1,7 @@
 const { navigate,
         ClickonContains,
-        saveDashboard} = require("../Functions/DashboardTestFunction");
+        saveDashboard,
+        deleteAllDashboards} = require("../Functions/DashboardTestFunction");
 const { UsingSearch,
         goToLink } = require("../Functions/PageTestFunction");
 const {
@@ -17,8 +18,9 @@ class DashboardPage {
         additionalactions.forEach(selector => navigate(selector));
         saveDashboard();
     }
+    static deleteAllDashboards () {
+        deleteAllDashboards()
+    }
 }
-//Объединить SearchFor и OpenDashboard в общий метод под названием "Create Dashboard", поменять тест, чтобы он создавал дашборд
-//Далее создать тест, который будет удалять дашборд
 
 module.exports = { DashboardPage };
