@@ -1,10 +1,11 @@
 
 const mainSelectors = {
-     alertingList: '[data-testid="data-testid Nav menu item"][href="/alerting/list"]',
-     alertingNotification: '[data-testid="data-testid Nav menu item"][href="/alerting/notifications"]',
-     alertingRoutes: '[data-testid="data-testid Nav menu item"][href="/alerting/routes"]',
-     adminPlugins: '[data-testid="data-testid Nav menu item"][href="/admin/plugins"]',
-     adminExtensions: '[data-testid="data-testid Nav menu item"][href="/admin/extensions"]',
+     home : '[data-testid="data-testid Nav menu item"][href="/"]',
+     alertingList : '[data-testid="data-testid Nav menu item"][href="/alerting/list"]',
+     alertingNotification : '[data-testid="data-testid Nav menu item"][href="/alerting/notifications"]',
+     alertingRoutes : '[data-testid="data-testid Nav menu item"][href="/alerting/routes"]',
+     adminPlugins : '[data-testid="data-testid Nav menu item"][href="/admin/plugins"]',
+     adminExtensions : '[data-testid="data-testid Nav menu item"][href="/admin/extensions"]',
      bookmarks : '[href="/bookmarks"]',
      dashboards : '[href="/dashboards"]',
      playlists : '[href="/playlists"]',

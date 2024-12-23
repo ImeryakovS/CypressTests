@@ -18,8 +18,12 @@ function UsingSearch (request) { //используем поиск и пишем
     cy.url().should('include',`${request}`)
 }
 
+function goToLink (link) {
+    cy.visit(link)
+}
+
 function navigateLinks (links) { //переходим по ссылкам в цикле
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
 }
 
-module.exports = { expandSection, UsingSearch, navigateLinks }; //удалил navigateAndVerify
+module.exports = { expandSection, UsingSearch, navigateLinks, goToLink }; //удалил navigateAndVerify
