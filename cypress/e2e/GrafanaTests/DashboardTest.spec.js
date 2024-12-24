@@ -1,9 +1,9 @@
 const { DashboardPage } = require('./Additional/Classes/DashboardPage.js')
-
+const { Login} = require('./Additional/Functions/LoginTestFunction.js')
 describe ("Test for dashboard", () => {
 
     beforeEach(() => {
-        cy.login('Sergeytest', 'test');
+        Login();
     })
 
     it ("User successfully created new dashboard", () => {

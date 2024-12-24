@@ -8,6 +8,7 @@ function sendResetEmail () {
 }
 
 function Login() {
+    cy.visit("http://localhost:3000/login")
     cy.get(loginSelectors.user).type(credentials.username)
     cy.get(loginSelectors.password).type(credentials.password)
     cy.get(loginSelectors.submit).click()

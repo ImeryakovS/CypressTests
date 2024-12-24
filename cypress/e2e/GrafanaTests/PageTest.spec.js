@@ -1,41 +1,29 @@
-const {
-    expandSection,
-    UsingSearch,
-    navigateLinks } = require('./Additional/Functions/PageTestFunction.js')
-const {
-    dashboards,
-    alerting,
-    admin,
-    sections } = require('./Additional/Selectors/MainSelectors.js')
+const { expandSection} = require('./Additional/Functions/PageTestFunction.js')
+const { sections } = require('./Additional/Selectors/MainSelectors.js')
 const { Login} = require('./Additional/Functions/LoginTestFunction.js')
+const { MainPage } = require('./Additional/Classes/MainPage.js')
 
-describe("Navigation", () => {
+describe("Navigation for MainPage", () => {
 
         beforeEach(() => {
-            cy.visit("http://localhost:3000/login")
             Login();
             sections.forEach(label => expandSection(label));
           });
-        
-        //dashboards
-        it("navigate to dashboard links", () => {
-            navigateLinks(dashboards);
+
+        it("User successfully navigate to dashboard links", () => {
+            MainPage.goToDashboardLinks();
         });
 
-        //alerting
-        it("navigate to alerting links", () => {
-            navigateLinks(alerting);
+        it("User successfully navigate to alerting links", () => {
+            MainPage.goToAlertingLinks();
         });
 
-        //admin
-        it("navigate to admin links", () => {
-        navigateLinks(admin);
-        cy.contains('Extend the UI of plugins and Grafana').should('be.visible')
+        it("User successfully navigate to admin links", () => {
+            MainPage.goToAdminLinks();
         });
 
-        //search
-        it("User successfully use search", () => {
-            UsingSearch("playlists");
+        it("User successfully using search", () => {
+            MainPage.Searching();
         });
 });
 
