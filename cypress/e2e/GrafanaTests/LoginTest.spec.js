@@ -21,8 +21,15 @@ const { LoginPage } = require('./Additional/Classes/LoginPage.js')
     it("Error displayed whn incorrect password is displayed", () => {
         LoginPage.incorrectCredentials();
     })
+
  })
 
+describe ("API tests", () => {
+    it ("User successfully created with API methods", () => {
+        LoginPage.createApiUser()
+    })
 
- 
- 
+    it("User successfully deleted with API methods", () => {
+        LoginPage.deleteApiUser()
+    })
+})

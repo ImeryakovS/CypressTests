@@ -3,6 +3,7 @@ const {
     receiveNewCredentials,
     returnToLogin,
     checkErrorLoginMessage} = require('../Functions/LoginTestFunction.js')
+const { deleteNewUser, createAndSaveNewUser } = require('../Functions/APILoginTestFunction.js')
 
 class LoginPage {
     static successLogin() {
@@ -17,6 +18,12 @@ class LoginPage {
     static incorrectCredentials() {
         checkErrorLoginMessage()
     };
+    static createApiUser () {
+        createAndSaveNewUser();
+    }
+    static deleteApiUser () {
+        deleteNewUser();
+    }
 }
 
 module.exports = { LoginPage };
