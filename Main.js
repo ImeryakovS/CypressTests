@@ -13,3 +13,5 @@ describe ('Hello test suite', ()=> {
 //Также для того чтобы запускат ьсайты локально был установлен пакет tiny-server. Для запуска используй npm start
 
 //про графану. Для того чтобы запустить нужно использовать команду "make run" в wsl среде
+
+//запуск в headless режиме npx cypress run --spec "cypress/e2e/GrafanaTests/**/*"
