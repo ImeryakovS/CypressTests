@@ -24,7 +24,7 @@ const { LoginPage } = require('./Additional/Classes/LoginPage.js')
 
  })
 
-describe ("API tests", () => {
+describe.only ("API tests", () => {
     it ("User successfully created with API methods", () => {
         LoginPage.createApiUser()
     })
