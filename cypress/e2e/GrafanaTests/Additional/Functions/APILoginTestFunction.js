@@ -3,7 +3,7 @@ const { BasicAUTH, APICredentials } = require('../Selectors/LoginSelectors');
 let userid = 0;
 
 async function createNewUser() {
-    return cy.request(
+     cy.request(
         {
             method: 'POST',
             url : 'http://localhost:3000/api/admin/users',

@@ -29,7 +29,7 @@ describe.only ("API tests", () => {
         LoginPage.createApiUser()
     })
 
-    it("User successfully deleted with API methods", () => {
+    it ("User successfully deleted with API methods", () => {
         LoginPage.deleteApiUser()
     })
 })
