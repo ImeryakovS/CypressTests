@@ -9,9 +9,9 @@ describe ("Create folder and dashboards with API", () => {
         createFolderAndDashboard.createNewDashboard();
     })
 
-    /*it ("User successfully deleted folder for dashboards with API",() => {
+    it ("User successfully deleted folder for dashboards with API",() => {
         createFolderAndDashboard.deleteNewFolder();
-    })*/
+    })
 
 
 })

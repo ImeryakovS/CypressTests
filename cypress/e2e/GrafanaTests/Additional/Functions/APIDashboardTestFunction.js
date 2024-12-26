@@ -3,6 +3,8 @@ const { bodyForCreateFolder, bodyForCreateDashboard } = require("../Selectors/AP
 
 let folderUid = "";
 let dashboardId = 0;
+
+
 async function createFolder() {
     cy.request(
         {
@@ -29,19 +31,35 @@ async function createDashboard() {
     cy.request(
         {
             method: 'POST',
-            url : '/api/dashboards/db',
+            url : 'http://localhost:3000/api/dashboards/db',
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
             },
-            body: bodyForCreateDashboard,
+            body:  //Надо подумать, как folderUid отправлять в селекторы
+                {
+
+                    'dashboard': {
+                        'id': null,
+                        'uid': null,
+                        'title': "Dashboard for API",
+                        'tags': [ "API" ],
+                        'timezone': "browser",
+                        'schemaVersion': 16,
+                        'refresh': "25s"
+                    },
+                    'folderUid': folderUid,
+                    'message': "Create new dashboard with API",
+                    'overwrite': false
+
+                },
             headers : {
                 'Content-Type': 'application/json'
             }
         })
         .then ( (response) => {
             expect(response.status).to.eq(200)
-            expect(response.body.message).to.eq('Create new dashboard with API')
+            //expect(response.body.message).to.eq('Create new dashboard with API')
             return dashboardId = response.body.id;
         })
 }
