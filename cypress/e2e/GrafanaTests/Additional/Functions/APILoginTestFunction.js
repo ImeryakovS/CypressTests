@@ -2,7 +2,7 @@ const { BasicAUTH, APICredentials } = require('../Selectors/LoginSelectors');
 
 let userid = 0;
 
-async function methodCreatingNewUser() {
+async function createNewUser() {
     return cy.request(
         {
             method: 'POST',
@@ -38,4 +38,4 @@ function deleteNewUser() {
             expect(response.body.message).to.eq('User deleted')
         });
 }
-module.exports = { deleteNewUser, methodCreatingNewUser };
+module.exports = { deleteNewUser, createNewUser };
