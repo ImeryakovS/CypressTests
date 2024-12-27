@@ -1,4 +1,4 @@
-const { createFolder, deleteFolder, createDashboard, deleteDashboard} = require("../Functions/APIDashboardTestFunction.js");
+const { createFolder, deleteFolder, createDashboardApi, deleteDashboard} = require("../Functions/APIDashboardTestFunction.js");
 
 class createFolderAndDashboard {
     static createNewFolder() {
@@ -10,7 +10,7 @@ class createFolderAndDashboard {
     }
 
     static createNewDashboard() {
-        void createDashboard();
+        void createDashboardApi();
     }
 
     static deleteNewDashboard () {

@@ -28,7 +28,7 @@ async function createFolder() {
         })
 }
 grafanaURl
-async function createDashboard() {
+async function createDashboardApi() {
     bodyForCreateDashboard.folderUid = folderUid
     cy.log("uid = ",folderUid)
     cy.log("bodyForCreateDashboard.folderUid = ", bodyForCreateDashboard.folderUid)
@@ -92,4 +92,4 @@ function deleteFolder() {
         })
 }
 
-module.exports = { createFolder, deleteFolder, createDashboard, deleteDashboard }
+module.exports = { createFolder, deleteFolder, createDashboardApi, deleteDashboard }
