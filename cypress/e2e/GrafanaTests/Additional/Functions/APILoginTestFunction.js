@@ -1,4 +1,4 @@
-const { BasicAUTH, APICredentials } = require('../Selectors/LoginSelectors');
+const { BasicAUTH, APICredentials } = require('../Selectors/APILoginSelectors');
 const { grafanaURl} = require("../Selectors/URL");
 
 let userid = 0;

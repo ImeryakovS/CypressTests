@@ -1,4 +1,4 @@
-const { BasicAUTH, APICredentials} = require("../Selectors/LoginSelectors");
+const { BasicAUTH} = require("../Selectors/APILoginSelectors");
 const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
 const { grafanaURl } = require("../Selectors/URL");
 let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");

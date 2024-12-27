@@ -1,9 +1,10 @@
 const { goToLink } = require('./Additional/Functions/PageTestFunction.js')
 const { LoginPage } = require('./Additional/Classes/LoginPage.js')
+const {grafanaURl} = require("./Additional/Selectors/URL");
 
  describe("Test Login Page", () => {
     beforeEach(() => {
-        goToLink("http://localhost:3000/login")
+        goToLink(`${grafanaURl}/login`)
     })
 
     it("User can successfully log in", () => {
@@ -23,13 +24,3 @@ const { LoginPage } = require('./Additional/Classes/LoginPage.js')
     })
 
  })
-
-describe ("API tests", () => {
-    it ("User successfully created with API methods", () => {
-        LoginPage.createApiUser()
-    })
-
-    it ("User successfully deleted with API methods", () => {
-        LoginPage.deleteApiUser()
-    })
-})

@@ -13,16 +13,5 @@ const credentials = {
     password: "test",
     email: "Test@test.ru"
 }
-const BasicAUTH = {
-    Username : 'admin',
-    Password : '3cvqsdkw4'
-}
 
-const APICredentials = {
-    name : 'APITest1',
-    email : 'APITest1@email.com',
-    login : 'APITest1',
-    password : 'test'
-}
-
-module.exports = { loginSelectors, credentials, BasicAUTH, APICredentials };
+module.exports = { loginSelectors, credentials };
