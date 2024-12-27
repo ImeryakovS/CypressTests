@@ -1,8 +1,9 @@
 const { BasicAUTH, APICredentials} = require("../Selectors/LoginSelectors");
-const { bodyForCreateFolder, bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
+const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
+let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
 
 let folderUid = "";
-let dashboardId = 0;
+let dashboardUId = "";
 
 
 async function createFolder() {
@@ -27,7 +28,9 @@ async function createFolder() {
 }
 
 async function createDashboard() {
+    bodyForCreateDashboard.folderUid = folderUid
     cy.log("uid = ",folderUid)
+    cy.log("bodyForCreateDashboard.folderUid = ", bodyForCreateDashboard.folderUid)
     cy.request(
         {
             method: 'POST',
@@ -36,31 +39,35 @@ async function createDashboard() {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
             },
-            body:  //Надо подумать, как folderUid отправлять в селекторы
-                {
-
-                    'dashboard': {
-                        'id': null,
-                        'uid': null,
-                        'title': "Dashboard for API",
-                        'tags': [ "API" ],
-                        'timezone': "browser",
-                        'schemaVersion': 16,
-                        'refresh': "25s"
-                    },
-                    'folderUid': folderUid,
-                    'message': "Create new dashboard with API",
-                    'overwrite': false
-
-                },
+            body:  bodyForCreateDashboard,
             headers : {
                 'Content-Type': 'application/json'
             }
         })
         .then ( (response) => {
             expect(response.status).to.eq(200)
-            //expect(response.body.message).to.eq('Create new dashboard with API')
-            return dashboardId = response.body.id;
+            return dashboardUId = response.body.uid;
+        })
+}
+
+function deleteDashboard() {
+    cy.log("dashboardId = ",dashboardUId )
+    cy.request(
+        {
+            method: 'DELETE',
+            url : `http://localhost:3000/api/dashboards/uid/${dashboardUId}`,
+            auth : {
+                username: BasicAUTH.Username,
+                password: BasicAUTH.Password
+            },
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then ( (response) => {
+            expect(response.status).to.eq(200)
+            expect(response.body.title).to.eq(bodyForCreateDashboard.dashboard.title)
+            expect(response.body.message).to.eq(`Dashboard ${bodyForCreateDashboard.dashboard.title} deleted`)
         })
 }
 
@@ -84,4 +91,4 @@ function deleteFolder() {
         })
 }
 
-module.exports = { createFolder, deleteFolder, createDashboard, folderUid }
+module.exports = { createFolder, deleteFolder, createDashboard, deleteDashboard }

@@ -1,10 +1,10 @@
-let { folderUid } = require("../Functions/APIDashboardTestFunction")
+//let { folderUid } = require("../Functions/APIDashboardTestFunction")
 
 const bodyForCreateFolder = {
     title: 'Folder for API Test'
 }
 
-const bodyForCreateDashboard = {
+let bodyForCreateDashboard = {
 
         'dashboard': {
         'id': null,
@@ -15,7 +15,7 @@ const bodyForCreateDashboard = {
         'schemaVersion': 16,
         'refresh': "25s"
 },
-        'folderUid': folderUid,
+        'folderUid': 'test',
         'message': "Create new dashboard with API",
         'overwrite': false
 
