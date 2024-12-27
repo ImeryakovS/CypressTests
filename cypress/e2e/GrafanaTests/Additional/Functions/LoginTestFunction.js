@@ -1,4 +1,5 @@
 const { loginSelectors, credentials } = require('../Selectors/LoginSelectors');
+const {grafanaURl} = require("../Selectors/URL");
 
 function sendResetEmail () {
     cy.get('[href="/user/password/send-reset-email"]').click()
@@ -6,7 +7,7 @@ function sendResetEmail () {
 }
 
 function Login() {
-    cy.visit("http://localhost:3000/login")
+    cy.visit(`${grafanaURl}/login`)
     cy.get(loginSelectors.user).type(credentials.username)
     cy.get(loginSelectors.password).type(credentials.password)
     cy.get(loginSelectors.submit).click()

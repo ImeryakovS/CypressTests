@@ -18,13 +18,13 @@ const { LoginPage } = require('./Additional/Classes/LoginPage.js')
         LoginPage.goBackToLogin();
     })
 
-    it("Error displayed whn incorrect password is displayed", () => {
+    it("Error displayed when incorrect password is displayed", () => {
         LoginPage.incorrectCredentials();
     })
 
  })
 
-describe.only ("API tests", () => {
+describe ("API tests", () => {
     it ("User successfully created with API methods", () => {
         LoginPage.createApiUser()
     })

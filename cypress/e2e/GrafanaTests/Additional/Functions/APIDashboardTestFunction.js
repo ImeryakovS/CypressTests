@@ -1,5 +1,6 @@
 const { BasicAUTH, APICredentials} = require("../Selectors/LoginSelectors");
 const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
+const { grafanaURl } = require("../Selectors/URL");
 let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
 
 let folderUid = "";
@@ -10,7 +11,7 @@ async function createFolder() {
     cy.request(
         {
             method: 'POST',
-            url : 'http://localhost:3000/api/folders',
+            url : `${grafanaURl}/api/folders`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -26,7 +27,7 @@ async function createFolder() {
             return folderUid = response.body.uid;
         })
 }
-
+grafanaURl
 async function createDashboard() {
     bodyForCreateDashboard.folderUid = folderUid
     cy.log("uid = ",folderUid)
@@ -34,7 +35,7 @@ async function createDashboard() {
     cy.request(
         {
             method: 'POST',
-            url : 'http://localhost:3000/api/dashboards/db',
+            url : `${grafanaURl}/api/dashboards/db`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -55,7 +56,7 @@ function deleteDashboard() {
     cy.request(
         {
             method: 'DELETE',
-            url : `http://localhost:3000/api/dashboards/uid/${dashboardUId}`,
+            url : `${grafanaURl}/api/dashboards/uid/${dashboardUId}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -76,7 +77,7 @@ function deleteFolder() {
     cy.request(
         {
             method: 'DELETE',
-            url : `http://localhost:3000/api/folders/${folderUid}`,
+            url : `${grafanaURl}/api/folders/${folderUid}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password

@@ -1,4 +1,5 @@
 const { BasicAUTH, APICredentials } = require('../Selectors/LoginSelectors');
+const { grafanaURl} = require("../Selectors/URL");
 
 let userid = 0;
 
@@ -6,7 +7,7 @@ async function createNewUser() {
      cy.request(
         {
             method: 'POST',
-            url : 'http://localhost:3000/api/admin/users',
+            url : `${grafanaURl}/api/admin/users`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -28,7 +29,7 @@ function deleteNewUser() {
         cy.request(
             {
                 method : 'DELETE',
-                url : `http://localhost:3000/api/admin/users/${userid}`,
+                url : `${grafanaURl}/api/admin/users/${userid}`,
                 auth : {
                     username: BasicAUTH.Username,
                     password: BasicAUTH.Password
