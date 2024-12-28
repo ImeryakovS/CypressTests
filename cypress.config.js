@@ -10,6 +10,10 @@ module.exports = defineConfig({
       },
    specPattern: 'cypress/e2e/**/*.spec.js' // путь к тестам
     },
+    env: {
+      allure: true,
+    },
+    video: false,
     watchForFileChanges: false,
     viewportWidth: 1920,
     viewportHeight: 1080,
