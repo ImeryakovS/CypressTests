@@ -7,15 +7,23 @@
     "start": "tiny-server",
     "wget": "\"C:/ProgramData/chocolatey/bin/wget.exe\"",
     "cypress": "cypress",
+    "RunAllTests": "npx cypress run --spec \"cypress/e2e/GrafanaTests/**/*\" --env allure=true",
+    "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.16.1",
     "cypress-real-events": "^1.13.0",
     "lodash": "^4.17.21",
     "node-wget": "^0.4.3",
     "tiny-server": "^1.1.1"
+  },
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "cypress": "^12.14.0"
   }
 }
