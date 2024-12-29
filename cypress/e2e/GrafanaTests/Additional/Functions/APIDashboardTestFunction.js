@@ -8,7 +8,7 @@ let dashboardUId = "";
 
 
 async function createFolder() {
-    cy.request(
+    return cy.request(
         {
             method: 'POST',
             url : `${grafanaURl}/api/folders`,
@@ -24,15 +24,15 @@ async function createFolder() {
         .then ( (response) => {
             expect(response.status).to.eq(200)
             expect(response.body.title).to.eq('Folder for API Test')
-            return folderUid = response.body.uid;
+            Cypress.env('folderUid', response.body.uid);
         })
 }
 
 async function createDashboardApi() {
     bodyForCreateDashboard.folderUid = folderUid
     cy.log("uid = ",folderUid)
-    cy.log("bodyForCreateDashboard.folderUid = ", bodyForCreateDashboard.folderUid)
-    cy.request(
+    cy.log("bodyForCreateDashboard.folderUid = ", Cypress.env('folderUid'))
+    return cy.request(
         {
             method: 'POST',
             url : `${grafanaURl}/api/dashboards/db`,
@@ -47,16 +47,16 @@ async function createDashboardApi() {
         })
         .then ( (response) => {
             expect(response.status).to.eq(200)
-            return dashboardUId = response.body.uid;
+            Cypress.env('dashboardUId', response.body.uid);
         })
 }
 
 function deleteDashboard() {
-    cy.log("dashboardId = ",dashboardUId )
-    cy.request(
+    cy.log("dashboardId = ",Cypress.env('dashboardUId') )
+    return cy.request(
         {
             method: 'DELETE',
-            url : `${grafanaURl}/api/dashboards/uid/${dashboardUId}`,
+            url : `${grafanaURl}/api/dashboards/uid/${Cypress.env('dashboardUId')}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -74,10 +74,10 @@ function deleteDashboard() {
 
 function deleteFolder() {
     cy.log("uid = ",folderUid)
-    cy.request(
+    return cy.request(
         {
             method: 'DELETE',
-            url : `${grafanaURl}/api/folders/${folderUid}`,
+            url : `${grafanaURl}/api/folders/${Cypress.env('folderUid')}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
