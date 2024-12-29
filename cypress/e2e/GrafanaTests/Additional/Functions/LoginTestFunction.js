@@ -32,7 +32,7 @@ function receiveNewCredentials () {
 function returnToLogin () {
     sendResetEmail()
     cy.get(loginSelectors.login).click()
-    Login();
+    Login(credentials.username, credentials.password);
 }
 
 function checkErrorLoginMessage() {
