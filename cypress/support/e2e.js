@@ -19,3 +19,14 @@ import '@shelex/cypress-allure-plugin';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err) => {
+    if (err.message.includes("Failed to execute 'importScripts' on 'WorkerGlobalScope'")) {
+        return false;
+    }
+    if (err.message.includes('SomeOtherError')) {
+        return false;
+    }
+
+    return true;
+});

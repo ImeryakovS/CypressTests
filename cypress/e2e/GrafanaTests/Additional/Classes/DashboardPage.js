@@ -6,7 +6,7 @@ const { UsingSearch,
         goToLink } = require("../Functions/PageTestFunction");
 const {
     actions,
-    additionalactions } = require("../Selectors/DashboardSelectors");
+    additionalActions } = require("../Selectors/DashboardSelectors");
 
 
 class DashboardPage {
@@ -15,7 +15,7 @@ class DashboardPage {
         goToLink('http://localhost:3000/dashboard/new')
         actions.forEach(selector => navigate(selector));
         ClickonContains(timeRange);
-        additionalactions.forEach(selector => navigate(selector));
+        additionalActions.forEach(selector => navigate(selector));
         saveDashboard();
     }
     static deleteAllDashboards () {

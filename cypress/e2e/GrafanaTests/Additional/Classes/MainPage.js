@@ -22,7 +22,6 @@ class MainPage {
     static goToAdminLinks() {
         navigateLinks(admin)
         containText('div', 'Extend the UI of plugins and Grafana')
-        //cy.contains('Extend the UI of plugins and Grafana').should('be.visible')
     }
     static Searching() {
         UsingSearch('playlists')

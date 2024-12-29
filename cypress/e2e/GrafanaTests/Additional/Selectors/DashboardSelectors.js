@@ -41,7 +41,7 @@ const actions = [
     DashboardSelectors.inputTime,
 ];
 
-const additionalactions = [
+const additionalActions = [
     //DashboardPage.timeRange, //временно убрал, надо подумать, как сделать тест непрерывным
     DashboardSelectors.refresh,
     DashboardSelectors.transformations,
@@ -52,4 +52,4 @@ const additionalactions = [
     DashboardSelectors.buttonDiscard*/
 ];
 
-module.exports = { DashboardSelectors, additionalactions, actions };
+module.exports = { DashboardSelectors, additionalActions, actions };
