@@ -2,19 +2,19 @@ const { createFolder, deleteFolder, createDashboardApi, deleteDashboard} = requi
 
 class createFolderAndDashboard {
     static createNewFolder() {
-        void createFolder();
+        return createFolder();
     }
 
     static deleteNewFolder() {
-        deleteFolder();
+        return deleteFolder();
     }
 
     static createNewDashboard() {
-        void createDashboardApi();
+        return createDashboardApi();
     }
 
     static deleteNewDashboard () {
-        deleteDashboard();
+        return deleteDashboard();
     }
 }
 

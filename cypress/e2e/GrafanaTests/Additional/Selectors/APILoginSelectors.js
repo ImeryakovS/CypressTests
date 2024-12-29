@@ -10,4 +10,10 @@ const APICredentials = {
     password : 'test'
 }
 
-module.exports = { BasicAUTH, APICredentials };
+const roles = {
+    roleEditor: { role: 'Editor' },
+    roleAdmin: { role: 'Admin' },
+    roleViewer: { role: 'Viewer' }
+};
+
+module.exports = { BasicAUTH, APICredentials, roles };

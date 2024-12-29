@@ -1,11 +1,11 @@
-const { deleteNewUser, createNewUser } = require('../Functions/APILoginTestFunction.js')
+const { deleteNewUser, createNewUser} = require('../Functions/APILoginTestFunction.js')
 
 class APILoginPage {
     static createApiUser () {
-        void createNewUser();
+        return createNewUser();
     }
     static deleteApiUser () {
-        deleteNewUser();
+        return deleteNewUser();
     }
 }
 

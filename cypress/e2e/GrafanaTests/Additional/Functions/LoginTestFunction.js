@@ -6,10 +6,10 @@ function sendResetEmail () {
     cy.url().should('include','/send-reset-email')
 }
 
-function Login() {
+function Login(username,password) {
     cy.visit(`${grafanaURl}/login`)
-    cy.get(loginSelectors.user).type(credentials.username)
-    cy.get(loginSelectors.password).type(credentials.password)
+    cy.get(loginSelectors.user).type(username)
+    cy.get(loginSelectors.password).type(password)
     cy.get(loginSelectors.submit).click()
     cy.url().should('include','now&timezone=browser')
 }

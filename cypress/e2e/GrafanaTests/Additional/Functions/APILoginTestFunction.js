@@ -1,10 +1,8 @@
-const { BasicAUTH, APICredentials } = require('../Selectors/APILoginSelectors');
+const { BasicAUTH, APICredentials, roles } = require('../Selectors/APILoginSelectors');
 const { grafanaURl} = require("../Selectors/URL");
 
-let userid = 0;
-
-async function createNewUser() {
-     cy.request(
+ function createNewUser() {
+     return cy.request(
         {
             method: 'POST',
             url : `${grafanaURl}/api/admin/users`,
@@ -20,16 +18,17 @@ async function createNewUser() {
         .then ( (response) => {
             expect(response.status).to.eq(200)
             expect(response.body.message).to.eq('User created')
-            return userid = response.body.id;
+            Cypress.env('userid', response.body.id)
     })
 }
 
 function deleteNewUser() {
-    cy.log('userid = ', userid)
+   // const userid = Cypress.env('userid');
+    cy.log('userid = ', Cypress.env('userid'))
         cy.request(
             {
                 method : 'DELETE',
-                url : `${grafanaURl}/api/admin/users/${userid}`,
+                url : `${grafanaURl}/api/admin/users/${Cypress.env('userid')}`,
                 auth : {
                     username: BasicAUTH.Username,
                     password: BasicAUTH.Password
@@ -39,4 +38,5 @@ function deleteNewUser() {
             expect(response.body.message).to.eq('User deleted')
         });
 }
+
 module.exports = { deleteNewUser, createNewUser };

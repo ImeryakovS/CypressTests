@@ -1,10 +1,11 @@
 const { DashboardPage } = require('./Additional/Classes/DashboardPage.js')
 const { Login} = require('./Additional/Functions/LoginTestFunction.js')
+const { credentials } = require('./Additional/Selectors/LoginSelectors');
 
 describe ("Test for dashboard", () => {
 
     beforeEach(() => {
-        Login();
+        Login(credentials.username,credentials.password);
     })
 
     it ("User successfully created new dashboard", () => {

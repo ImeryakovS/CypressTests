@@ -2,11 +2,12 @@ const { expandSection} = require('./Additional/Functions/PageTestFunction.js')
 const { sections } = require('./Additional/Selectors/MainSelectors.js')
 const { Login} = require('./Additional/Functions/LoginTestFunction.js')
 const { MainPage } = require('./Additional/Classes/MainPage.js')
+const { credentials } = require('./Additional/Selectors/LoginSelectors');
 
 describe("Navigation for MainPage", () => {
 
         beforeEach(() => {
-            Login();
+            Login(credentials.username,credentials.password);
             sections.forEach(label => expandSection(label));
           });
 

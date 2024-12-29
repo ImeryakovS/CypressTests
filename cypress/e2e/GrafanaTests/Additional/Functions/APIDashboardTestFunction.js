@@ -27,7 +27,7 @@ async function createFolder() {
             return folderUid = response.body.uid;
         })
 }
-grafanaURl
+
 async function createDashboardApi() {
     bodyForCreateDashboard.folderUid = folderUid
     cy.log("uid = ",folderUid)

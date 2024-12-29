@@ -4,10 +4,11 @@ const {
     returnToLogin,
     checkErrorLoginMessage} = require('../Functions/LoginTestFunction.js')
 const { deleteNewUser, createNewUser } = require('../Functions/APILoginTestFunction.js')
+const { credentials } = require('../Selectors/LoginSelectors');
 
 class LoginPage {
     static successLogin() {
-        Login()
+        Login(credentials.username,credentials.password)
     };
     static newCredentials() {
         receiveNewCredentials()
