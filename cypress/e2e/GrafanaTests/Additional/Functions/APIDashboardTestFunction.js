@@ -3,10 +3,6 @@ const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
 const { grafanaURl } = require("../Selectors/URL");
 let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
 
-let folderUid = "";
-let dashboardUId = "";
-
-
 async function createFolder() {
     return cy.request(
         {
@@ -29,8 +25,6 @@ async function createFolder() {
 }
 
 async function createDashboardApi() {
-    bodyForCreateDashboard.folderUid = folderUid
-    cy.log("uid = ",folderUid)
     cy.log("bodyForCreateDashboard.folderUid = ", Cypress.env('folderUid'))
     return cy.request(
         {
@@ -73,7 +67,6 @@ function deleteDashboard() {
 }
 
 function deleteFolder() {
-    cy.log("uid = ",folderUid)
     return cy.request(
         {
             method: 'DELETE',

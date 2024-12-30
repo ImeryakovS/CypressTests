@@ -1,9 +1,9 @@
 const { changeRole } = require('../Functions/APIChangeRoleFunction.js')
-const { APILoginPage } = require("./APILoginPage");
+const { APIUsersPage } = require("./APIUsersPage");
 const { Login} = require("../Functions/LoginTestFunction");
 const { APICredentials} = require("../Selectors/APILoginSelectors");
 
-class APIChangeRole extends APILoginPage {
+class APIChangeRole extends APIUsersPage {
 
     static  createAndVerifyApiUser(roles) {
         return super.createApiUser().then(() => {

@@ -3,7 +3,7 @@ const {
     receiveNewCredentials,
     returnToLogin,
     checkErrorLoginMessage} = require('../Functions/LoginTestFunction.js')
-const { deleteNewUser, createNewUser } = require('../Functions/APILoginTestFunction.js')
+const { deleteNewUser, createNewUser } = require('../Functions/APIUsersTestFunction.js')
 const { credentials } = require('../Selectors/LoginSelectors');
 
 class LoginPage {
