@@ -1,5 +1,6 @@
 const { BasicAUTH, APICredentials, roles } = require('../Selectors/APILoginSelectors');
 const { grafanaURl} = require("../Selectors/URL");
+const {APIUsersPage} = require("../Classes/APIUsersPage");
 
  function createNewUser() {
      return cy.request(
@@ -19,7 +20,11 @@ const { grafanaURl} = require("../Selectors/URL");
             expect(response.status).to.eq(200)
             expect(response.body.message).to.eq('User created')
             Cypress.env('userid', response.body.id)
-    })
+        })
+         .then (() => {
+             cy.wait(500);
+         })
+
 }
 
 function deleteNewUser() {

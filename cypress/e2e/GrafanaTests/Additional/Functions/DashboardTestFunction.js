@@ -18,7 +18,7 @@ function ClickonContains (text) {
 
 function randName () {
     const random = Math.floor(Math.random() * 10000);
-    return 'testNameDashboard' + random.toString();
+    return 'test' + random.toString();
 }
 
 function saveDashboard () {
@@ -39,4 +39,4 @@ function deleteAllDashboards () {
     cy.get(DashboardSelectors.finalDeleteDashboards).click()
 }
 
-module.exports = { navigate, ClickonContains, saveDashboard, deleteAllDashboards };
+module.exports = { navigate, ClickonContains, saveDashboard, deleteAllDashboards, randName };

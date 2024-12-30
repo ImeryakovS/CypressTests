@@ -3,12 +3,11 @@ const { APIUsersPage } = require("./APIUsersPage");
 const { Login} = require("../Functions/LoginTestFunction");
 const { APICredentials} = require("../Selectors/APILoginSelectors");
 
-class APIChangeRole extends APIUsersPage {
-
-    static  createAndVerifyApiUser(roles) {
-        return super.createApiUser().then(() => {
+class APIChangeRole  {
+    static  createAndChangeRoleForApiUser(roles) {
+           return APIUsersPage.createApiUser().then(() => {
+               console.log('Start: Creating include methods user');
             changeRole(roles);
-            Login(APICredentials.login, APICredentials.password)
         });
     }
 }

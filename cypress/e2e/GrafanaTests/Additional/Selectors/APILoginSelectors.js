@@ -1,12 +1,14 @@
+const { randName } = require("../Functions/DashboardTestFunction");
+
 const BasicAUTH = {
     Username : 'admin',
     Password : '3cvqsdkw4'
 }
 
 const APICredentials = {
-    name : 'APITest1',
-    email : 'APITest1@email.com',
-    login : 'APITest1',
+    name : randName() + 'APITest1',
+    email : randName() + 'APITest1@email.com',
+    login : randName() + 'APITest1',
     password : 'test'
 }
 

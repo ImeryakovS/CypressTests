@@ -2,7 +2,7 @@ const { createFolderAndDashboard } = require("./Additional/Classes/APIDashboardP
 
 describe ("Create folder and dashboards with API", () => {
     it ("User successfully created folder for dashboards with API",() => {
-        createFolderAndDashboard.createNewFolder();
+        createFolderAndDashboard.createNewFolder()
     })
 
     it ("User successfully created new dashboard in the folder with API", () => {

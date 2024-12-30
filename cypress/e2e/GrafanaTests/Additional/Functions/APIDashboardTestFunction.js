@@ -3,7 +3,7 @@ const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
 const { grafanaURl } = require("../Selectors/URL");
 let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
 
-async function createFolder() {
+function createFolder() {
     return cy.request(
         {
             method: 'POST',
@@ -24,7 +24,8 @@ async function createFolder() {
         })
 }
 
-async function createDashboardApi() {
+function createDashboardApi() {
+    bodyForCreateDashboard.folderUid = Cypress.env('folderUid')
     cy.log("bodyForCreateDashboard.folderUid = ", Cypress.env('folderUid'))
     return cy.request(
         {
