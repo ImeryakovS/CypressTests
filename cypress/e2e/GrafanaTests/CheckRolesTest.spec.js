@@ -4,7 +4,7 @@ const { APIUsersPage } = require("./Additional/Classes/APIUsersPage");
 const { Login} = require("./Additional/Functions/LoginTestFunction");
 const { DashboardPage } = require("./Additional/Classes/DashboardPage");
 const { credentials} = require("./Additional/Selectors/LoginSelectors");
-
+//пока что данный тест проваливается в headless режиме. Нужно разбираться с асинхронностью
 describe ("Create admin user and check role permissions", () => {
     it ("Created users with Api and changed role for him", () => {
         ChangeRole.createAndChangeRoleForApiUser(roles.roleAdmin)

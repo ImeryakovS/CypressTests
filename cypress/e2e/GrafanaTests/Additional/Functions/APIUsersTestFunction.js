@@ -18,16 +18,17 @@ const { grafanaURl} = require("../Selectors/URL");
         .then ( (response) => {
             expect(response.status).to.eq(200)
             expect(response.body.message).to.eq('User created')
-            Cypress.env('userid', response.body.id)
+            Cypress.env('userId', response.body.id)
         })
 }
 
 function deleteNewUser() {
-    cy.log('userid = ', Cypress.env('userid'))
+    const userId = Cypress.env('userId');
+    cy.log('userId = ', userId)
         return cy.request(
             {
                 method : 'DELETE',
-                url : `${grafanaURl}/api/admin/users/${Cypress.env('userid')}`,
+                url : `${grafanaURl}/api/admin/users/${userId}`,
                 auth : {
                     username: BasicAUTH.Username,
                     password: BasicAUTH.Password

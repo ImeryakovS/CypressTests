@@ -6,9 +6,9 @@ const BasicAUTH = {
 }
 
 const APICredentials = {
-    name : randName() + 'APITest1',
-    email : randName() + 'APITest1@email.com',
-    login : randName() + 'APITest1',
+    name :'APITest1',
+    email : 'APITest1@email.com',
+    login : 'APITest1',
     password : 'test'
 }
 
