@@ -14,12 +14,15 @@ function UsingSearch (request) { //используем поиск и пишем
     cy.get('[role="combobox"]', { timeout: 5000 }) //timeout для прогрузки поиска
     .should('be.visible')
     .first()
-    .type(`${request}{enter}`)
+    .type(request)
+    .wait(500)
+    .type('{enter}')
     cy.url().should('include',`${request}`)
 }
 
 function goToLink (link) {
     cy.visit(link)
+    cy.url().should('include', link)
 }
 
 function navigateLinks (links) { //переходим по ссылкам в цикле

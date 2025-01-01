@@ -7,12 +7,12 @@ const { UsingSearch,
 const {
     actions,
     additionalActions } = require("../Selectors/DashboardSelectors");
-
+const { grafanaURl } = require("../Selectors/URL");
 
 class DashboardPage {
     static createDashboard(term, timeRange) {
         UsingSearch(term);
-        goToLink('http://localhost:3000/dashboard/new')
+        goToLink(`${grafanaURl}/dashboard/new`)
         actions.forEach(selector => navigate(selector));
         ClickonContains(timeRange);
         additionalActions.forEach(selector => navigate(selector));

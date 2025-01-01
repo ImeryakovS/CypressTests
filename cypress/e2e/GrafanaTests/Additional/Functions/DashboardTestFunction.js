@@ -1,9 +1,8 @@
 const { DashboardSelectors } = require("../Selectors/DashboardSelectors");
 const { containText } = require('./LoginTestFunction.js')
-//const {random} = require("lodash");
 const { mainSelectors } = require('../Selectors/MainSelectors.js')
-const {goToLink} = require("./PageTestFunction");
-const {grafanaURl} = require("../Selectors/URL");
+const { goToLink} = require("./PageTestFunction");
+const { grafanaURl} = require("../Selectors/URL");
 
 function navigate (selector) {
     cy.get(selector)
@@ -25,10 +24,17 @@ function saveDashboard () {
     cy.get (DashboardSelectors.changesSaveDashboard).click();
     containText ('h4', 'Full JSON diff');
     cy.get (DashboardSelectors.detailsSaveDashboard).click();
-    cy.get(DashboardSelectors.titleFieldSaveDashboard).type(randName());
-    cy.get(DashboardSelectors.descriptionSaveDashboard).type(randName());
+    cy.get(DashboardSelectors.titleFieldSaveDashboard).clear()
+    cy.get(DashboardSelectors.titleFieldSaveDashboard).type('testDashboard');
+    cy.get(DashboardSelectors.descriptionSaveDashboard).clear()
+    cy.get(DashboardSelectors.descriptionSaveDashboard).type('testDashboardDescription');
     cy.get (DashboardSelectors.savingSaveDashboard).click();
     cy.get (mainSelectors.home).click()
+}
+
+function editDashboard () {
+    cy.get(DashboardSelectors.editButton).click()
+    cy.get(DashboardSelectors.exitEditButton).click()
 }
 
 function deleteAllDashboards () {
@@ -39,4 +45,4 @@ function deleteAllDashboards () {
     cy.get(DashboardSelectors.finalDeleteDashboards).click()
 }
 
-module.exports = { navigate, ClickonContains, saveDashboard, deleteAllDashboards, randName };
+module.exports = { navigate, ClickonContains, saveDashboard, deleteAllDashboards, randName, editDashboard };

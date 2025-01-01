@@ -1,5 +1,3 @@
-const { mainSelectors } = require('./MainSelectors')
-
 const DashboardSelectors = {
     //Newpanel : '[href="dashboard/new"]',
     addVisualisation : '[data-testid="data-testid Create new panel button"]',
@@ -22,6 +20,9 @@ const DashboardSelectors = {
     titleFieldSaveDashboard: '[aria-label="Save dashboard title field"]',
     descriptionSaveDashboard: '[aria-label="Save dashboard description field"]',
     savingSaveDashboard : '[data-testid="data-testid Save dashboard drawer button"]',
+    //editDashboards
+    editButton : '[data-testid="data-testid Edit dashboard button"]',
+    exitEditButton : '[data-testid="data-testid Exit edit mode button"]',
     //deleteDashboards selectors
     markAllDashboards : '[role="columnheader"] [class="css-11ty15i"]', //'[role="columnheader"] [type="checkbox"] [class="css-11ty15i"]',
     deleteDashboards : '[class="css-ttl745-button"] [class="css-1riaxdn"]',
@@ -32,7 +33,6 @@ const DashboardSelectors = {
 };
 
 const actions = [
-    //DashboardSelectors.Newpanel, //было DashboardPage.Newpanel
     DashboardSelectors.addVisualisation,
     DashboardSelectors.buttonMixed,
     DashboardSelectors.tableView,
@@ -42,14 +42,10 @@ const actions = [
 ];
 
 const additionalActions = [
-    //DashboardPage.timeRange, //временно убрал, надо подумать, как сделать тест непрерывным
     DashboardSelectors.refresh,
     DashboardSelectors.transformations,
     DashboardSelectors.alert,
     DashboardSelectors.saveDashboard
-    /*DashboardSelectors.discard,
-    mainSelectors.bookmarks, //было mainPage.bookmarks
-    DashboardSelectors.buttonDiscard*/
 ];
 
 module.exports = { DashboardSelectors, additionalActions, actions };
