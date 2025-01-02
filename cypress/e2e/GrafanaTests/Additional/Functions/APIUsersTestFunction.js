@@ -22,9 +22,8 @@ const { grafanaURl} = require("../Selectors/URL");
         })
 }
 
-function deleteNewUser() {
-    const userId = Cypress.env('userId');
-    cy.log('userId = ', userId)
+function deleteNewUser(userId) {
+    cy.log(`Deleting user with ID: ${userId}`)
         return cy.request(
             {
                 method : 'DELETE',

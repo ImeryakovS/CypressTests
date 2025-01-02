@@ -5,7 +5,11 @@ class APIUsersPage {
         return createNewUser();
     }
     static deleteApiUser () {
-        return deleteNewUser();
+        const userId = Cypress.env('userId');
+        if (!userId) {
+            throw new Error('User ID is missing. Please create user before deleted')
+        }
+        return deleteNewUser(userId);
     }
 }
 
