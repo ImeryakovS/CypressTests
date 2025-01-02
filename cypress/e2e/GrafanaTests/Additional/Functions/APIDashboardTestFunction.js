@@ -26,7 +26,7 @@ function createFolder() {
 
 function createDashboardApi() {
     bodyForCreateDashboard.folderUid = Cypress.env('folderUid')
-    cy.log("bodyForCreateDashboard.folderUid = ", Cypress.env('folderUid'))
+    cy.log("Create Dashboard for folderUid: ", Cypress.env('folderUid'))
     return cy.request(
         {
             method: 'POST',
@@ -47,7 +47,7 @@ function createDashboardApi() {
 }
 
 function deleteDashboard() {
-    cy.log("dashboardId = ",Cypress.env('dashboardUId') )
+    cy.log("Successfully deleted dashboard with uid = ",Cypress.env('dashboardUId') )
     return cy.request(
         {
             method: 'DELETE',
@@ -68,6 +68,7 @@ function deleteDashboard() {
 }
 
 function deleteFolder() {
+    cy.log("Successfully deleted dashboard with uid = ",Cypress.env('folderUid') )
     return cy.request(
         {
             method: 'DELETE',

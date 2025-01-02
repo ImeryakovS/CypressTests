@@ -3,18 +3,8 @@ const { createFolderAndDashboard } = require("./Additional/Classes/APIDashboardP
 describe ("Create folder and dashboards with API", () => {
     it ("User successfully created folder for dashboards with API",() => {
         createFolderAndDashboard.createNewFolder()
+            .then (() => createFolderAndDashboard.createNewDashboard() )
+            .then (() => createFolderAndDashboard.deleteNewDashboard() )
+            .then (() => createFolderAndDashboard.deleteNewFolder() )
     })
-
-    it ("User successfully created new dashboard in the folder with API", () => {
-        createFolderAndDashboard.createNewDashboard();
-    })
-
-    it ("User successfully deleted new dashboard in the folder with API", () => {
-        createFolderAndDashboard.deleteNewDashboard();
-    })
-
-    it ("User successfully deleted folder for dashboards with API",() => {
-        createFolderAndDashboard.deleteNewFolder();
-    })
-
 })
