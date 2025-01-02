@@ -8,11 +8,8 @@ describe ("Test for dashboard", () => {
         Login(credentials.username,credentials.password);
     })
 
-    it ("User successfully created new dashboard", () => {
+    it.only ("User successfully created new dashboard and deleted after", () => {
         DashboardPage.createDashboard("dashboard","Last 15 minutes")
-    })
-
-    it ("User successfully deleted all dashboards", () => {
         DashboardPage.deleteAllDashboards()
     })
 })
