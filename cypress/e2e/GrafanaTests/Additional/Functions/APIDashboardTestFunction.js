@@ -24,8 +24,12 @@ function createFolder() {
 }
 
 function createDashboardApi() {
-    bodyForCreateDashboard.folderUid = Cypress.env('folderUid')
-    cy.log("Create Dashboard for folderUid: ", Cypress.env('folderUid'))
+    const folderUid = Cypress.env('folderUid')
+    if (!folderUid) {
+        throw new Error('folder UID is missing')
+    }
+    bodyForCreateDashboard.folderUid = folderUid
+    cy.log("Create Dashboard for folderUid: ", folderUid)
     return cy.request(
         {
             method: 'POST',
@@ -46,11 +50,15 @@ function createDashboardApi() {
 }
 
 function deleteDashboard() {
-    cy.log("Successfully deleted dashboard with uid = ",Cypress.env('dashboardUId') )
+    const dashboardUId = Cypress.env('dashboardUId')
+    if (!dashboardUId) {
+        throw new Error('Dashboard UID is missing')
+    }
+    cy.log("Successfully deleted dashboard with uid = ",dashboardUId )
     return cy.request(
         {
             method: 'DELETE',
-            url : `/api/dashboards/uid/${Cypress.env('dashboardUId')}`,
+            url : `/api/dashboards/uid/${dashboardUId}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -67,11 +75,15 @@ function deleteDashboard() {
 }
 
 function deleteFolder() {
+    const folderUid = Cypress.env('folderUid')
+    if (!folderUid) {
+        throw new Error('folder UID is missing')
+    }
     cy.log("Successfully deleted dashboard with uid = ",Cypress.env('folderUid') )
     return cy.request(
         {
             method: 'DELETE',
-            url : `/api/folders/${Cypress.env('folderUid')}`,
+            url : `/api/folders/${folderUid}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
