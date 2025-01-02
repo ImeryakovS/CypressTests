@@ -1,21 +1,21 @@
 const { goToLink } = require('./Additional/Functions/PageTestFunction.js')
 const { LoginPage } = require('./Additional/Classes/LoginPage.js')
-const {grafanaURl} = require("./Additional/Selectors/URL");
+const { grafanaURl} = require("./Additional/Selectors/URL");
 
  describe("Test Login Page", () => {
     beforeEach(() => {
         goToLink(`${grafanaURl}/login`)
     })
 
-    it("User can successfully log in", () => {
+    it ("User can successfully log in", () => {
         LoginPage.successLogin();
     })
 
-    it("User received new password on email", () => {
+    it ("User received new password on email", () => {
         LoginPage.newCredentials();
     })
 
-    it("User successfully return to login", () => {
+    it ("User successfully return to login", () => {
         LoginPage.goBackToLogin();
     })
 

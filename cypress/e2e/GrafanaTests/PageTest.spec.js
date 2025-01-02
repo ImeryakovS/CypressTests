@@ -11,19 +11,19 @@ describe("Navigation for MainPage", () => {
             sections.forEach(label => expandSection(label));
           });
 
-        it("User successfully navigate to dashboard links", () => {
+        it ("User successfully navigate to dashboard links", () => {
             MainPage.goToDashboardLinks();
         });
 
-        it("User successfully navigate to alerting links", () => {
+        it ("User successfully navigate to alerting links", () => {
             MainPage.goToAlertingLinks();
         });
 
-        it("User successfully navigate to admin links", () => {
+        it ("User successfully navigate to admin links", () => {
             MainPage.goToAdminLinks();
         });
 
-        it("User successfully using search", () => {
+        it ("User successfully using search", () => {
             MainPage.Searching();
         });
 });
