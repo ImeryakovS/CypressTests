@@ -1,13 +1,12 @@
 const { BasicAUTH} = require("../Selectors/APILoginSelectors");
 const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
-const { grafanaURl } = require("../Selectors/URL");
 let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
 
 function createFolder() {
     return cy.request(
         {
             method: 'POST',
-            url : `${grafanaURl}/api/folders`,
+            url : `/api/folders`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -30,7 +29,7 @@ function createDashboardApi() {
     return cy.request(
         {
             method: 'POST',
-            url : `${grafanaURl}/api/dashboards/db`,
+            url : `/api/dashboards/db`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -51,7 +50,7 @@ function deleteDashboard() {
     return cy.request(
         {
             method: 'DELETE',
-            url : `${grafanaURl}/api/dashboards/uid/${Cypress.env('dashboardUId')}`,
+            url : `/api/dashboards/uid/${Cypress.env('dashboardUId')}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
@@ -72,7 +71,7 @@ function deleteFolder() {
     return cy.request(
         {
             method: 'DELETE',
-            url : `${grafanaURl}/api/folders/${Cypress.env('folderUid')}`,
+            url : `/api/folders/${Cypress.env('folderUid')}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password

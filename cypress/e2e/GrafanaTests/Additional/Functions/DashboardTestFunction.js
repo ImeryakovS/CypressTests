@@ -2,7 +2,6 @@ const { DashboardSelectors } = require("../Selectors/DashboardSelectors");
 const { containText } = require('./LoginTestFunction.js')
 const { mainSelectors } = require('../Selectors/MainSelectors.js')
 const { goToLink} = require("./PageTestFunction");
-const { grafanaURl} = require("../Selectors/URL");
 
 function navigate (selector) {
     cy.get(selector)
@@ -38,7 +37,7 @@ function editDashboard () {
 }
 
 function deleteAllDashboards () {
-    goToLink(`${grafanaURl}/dashboards`);
+    goToLink(`/dashboards`);
     cy.get(DashboardSelectors.childCheckboxes).click({ multiple: true, force: true})
     cy.get(DashboardSelectors.deleteDashboards).click()
     cy.get(DashboardSelectors.confirmDeleteDashboard).click().type('Delete')

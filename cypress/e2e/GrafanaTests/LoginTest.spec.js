@@ -1,10 +1,9 @@
 const { goToLink } = require('./Additional/Functions/PageTestFunction.js')
 const { LoginPage } = require('./Additional/Classes/LoginPage.js')
-const { grafanaURl} = require("./Additional/Selectors/URL");
 
  describe("Test Login Page", () => {
     beforeEach(() => {
-        goToLink(`${grafanaURl}/login`)
+        goToLink(`/login`)
     })
 
     it ("User can successfully log in", () => {

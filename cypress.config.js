@@ -9,6 +9,7 @@ module.exports = defineConfig({
           return config;
       },
       specPattern: 'cypress/e2e/**/*.spec.js',// путь к тестам
+      baseUrl: 'http://localhost:3000',
       retries: {
           runMode: 0,
           openMode: 0,

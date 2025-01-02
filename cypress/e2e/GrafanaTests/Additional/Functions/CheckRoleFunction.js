@@ -1,10 +1,9 @@
-const { grafanaURl } = require("../Selectors/URL");
 const { UsingSearch } = require('../Functions/PageTestFunction')
 const { DashboardSelectors } = require('../Selectors/DashboardSelectors')
 const { editDashboard } = require('../Functions/DashboardTestFunction')
 
 function checkPermissionsViewer (link) {
-    cy.visit(`${grafanaURl}${link}`)
+    cy.visit(`${link}`)
     cy.url().should('not.include',link )
 }
 

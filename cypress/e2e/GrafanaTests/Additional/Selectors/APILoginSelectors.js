@@ -1,4 +1,3 @@
-const { randName } = require("../Functions/DashboardTestFunction");
 
 const BasicAUTH = {
     Username : 'admin',

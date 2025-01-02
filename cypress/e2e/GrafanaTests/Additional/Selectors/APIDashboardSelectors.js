@@ -1,4 +1,3 @@
-//let { folderUid } = require("../Functions/APIDashboardTestFunction")
 
 const bodyForCreateFolder = {
     title: 'Folder for API Test'

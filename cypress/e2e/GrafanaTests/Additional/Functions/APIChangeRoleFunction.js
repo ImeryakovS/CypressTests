@@ -1,4 +1,3 @@
-const {grafanaURl} = require("../Selectors/URL");
 const {BasicAUTH} = require("../Selectors/APILoginSelectors");
 
 function changeRole(roles) {
@@ -6,7 +5,7 @@ function changeRole(roles) {
     return cy.request(
         {
             method : 'PATCH',
-            url : `${grafanaURl}/api/orgs/1/users/${userId}`,
+            url : `/api/orgs/1/users/${userId}`,
             auth : {
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
