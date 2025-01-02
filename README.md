@@ -29,4 +29,8 @@ How to use it?
 4) Run `npm run allure:report` for create reports
 5) Run `npm run allure:open` for open and view all reports
 
+Current state the Allure:
+
+![Allure](./image/Allure.png)
+
 
