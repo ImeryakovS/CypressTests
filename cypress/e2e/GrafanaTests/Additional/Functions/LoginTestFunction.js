@@ -1,4 +1,5 @@
 const { loginSelectors, credentials } = require('../Selectors/LoginSelectors');
+const { goToLink } = require('../Functions/PageTestFunction')
 
 function sendResetEmail () {
     cy.get('[href="/user/password/send-reset-email"]').click()
@@ -45,10 +46,16 @@ function checkErrorLoginMessage() {
     containText(loginSelectors.alert,'Password is required')
 }
 
+function logout(link) {
+    cy.visit('/logout')
+}
+
+
 module.exports = {
     Login,
     containText,
     receiveNewCredentials,
     returnToLogin,
-    checkErrorLoginMessage
+    checkErrorLoginMessage,
+    logout
 };

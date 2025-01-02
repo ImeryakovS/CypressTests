@@ -1,67 +1,63 @@
 const { ChangeRole } = require("./Additional/Classes/ChangeRole");
 const {  roles, APICredentials } = require('./Additional/Selectors/APILoginSelectors');
 const { APIUsersPage } = require("./Additional/Classes/APIUsersPage");
-const { Login} = require("./Additional/Functions/LoginTestFunction");
+const { Login, logout} = require("./Additional/Functions/LoginTestFunction");
 const { DashboardPage } = require("./Additional/Classes/DashboardPage");
 const { credentials} = require("./Additional/Selectors/LoginSelectors");
-//Для данного теста требуется провести рефакторинг. В данный момент он не соответствует бест практикам для Cypress
-//Требуется вынести создание тестовой среды в начало, а удалять данные уже после
+
 
 describe ("Create admin user and check role permissions", () => {
     it ("Created users with Api and changed role for him", () => {
         ChangeRole.createAndChangeRoleForApiUser(roles.roleAdmin)
-    })
-
-    it ('Login for user with Admin role and check permissions (create and delete dashboards) ', () => {
-        Login(APICredentials.login,APICredentials.password);
-       DashboardPage.createDashboard("dashboard","Last 15 minutes")
-       DashboardPage.deleteAllDashboards()
-    });
-
-    it ("User successfully deleted with API methods", () => {
-        APIUsersPage.deleteApiUser()
+            .then (() => {
+                Login(APICredentials.login,APICredentials.password);
+                DashboardPage.createDashboard("dashboard","Last 15 minutes")
+                DashboardPage.deleteAllDashboards()
+            })
+            .then (() => {
+                APIUsersPage.deleteApiUser()
+            })
     })
 })
 
 describe ("Create viewer user and check role permissions", () => {
     it ("Created users with Api and changed role for him", () => {
         ChangeRole.createAndChangeRoleForApiUser(roles.roleViewer)
+            .then (() => {
+                Login(APICredentials.login,APICredentials.password);
+                ChangeRole.checkRoleForViewer()
+            })
+            .then (() => {
+                APIUsersPage.deleteApiUser()
+        })
     })
-
-    it ('Login for user with viewer role (go to page for create dashboards, and check exclude this page)', () => {
-        Login(APICredentials.login,APICredentials.password);
-        ChangeRole.checkRoleForViewer()
-    });
-
-    it ("User successfully deleted with API methods", () => {
-        APIUsersPage.deleteApiUser()
-    })
-
 })
 
-describe.only ("Create editor user and check role permissions", () => {
-
-    it ("Created users with Api and changed role for him", () => {
-        ChangeRole.createAndChangeRoleForApiUser(roles.roleEditor)
-    })
-
-    it ('Admin created dashboard for test ', () => {
+describe ("Create editor user and check role permissions", () => {
+    before(() => {
+        cy.log('Created testDashboard for test environment with admin')
         Login(credentials.username,credentials.password)
         DashboardPage.createDashboard("dashboard","Last 15 minutes")
-    });
+        logout('/logout')
+    })
 
-    it ('Login for user with editor role and check permissions (edit dashboards and check delete button)', () => {
-        Login(APICredentials.login,APICredentials.password);
-        ChangeRole.checkRolesForEditor()
-    });
-
-    it ("Admin deleted dashboards", () => {
+    after (() => {
+        cy.log('Deleted testDashboard for test environment with admin')
+        logout('/logout')
         Login(credentials.username,credentials.password)
         DashboardPage.deleteAllDashboards()
     })
 
-    it ("User successfully deleted with API methods", () => {
-        APIUsersPage.deleteApiUser()
+    it ("Created users with Api and changed role for him", () => {
+        ChangeRole.createAndChangeRoleForApiUser(roles.roleEditor)
+            .then (()=> {
+                Login(APICredentials.login,APICredentials.password);
+                ChangeRole.checkRolesForEditor()
+            })
+            .then (() => {
+                APIUsersPage.deleteApiUser()
+            })
     })
+
 
 })
