@@ -1,6 +1,6 @@
 const { DashboardSelectors } = require("../Selectors/DashboardSelectors");
-const { containText } = require('./LoginTestFunction.js')
 const { mainSelectors } = require('../Selectors/MainSelectors.js')
+const { containText } = require('./LoginTestFunction.js')
 const { goToLink} = require("./PageTestFunction");
 
 function navigate (selector) {
@@ -10,14 +10,14 @@ function navigate (selector) {
     .click()
 }
 
-function ClickonContains (text) {
+function ClickOnContains (text) {
     cy.contains(text).click()
 }
 
-function randName () {
+/*function randName () {
     const random = Math.floor(Math.random() * 10000);
     return 'test' + random.toString();
-}
+}*/ // временно не используется
 
 function saveDashboard () {
     cy.get (DashboardSelectors.changesSaveDashboard).click();
@@ -44,4 +44,4 @@ function deleteAllDashboards () {
     cy.get(DashboardSelectors.finalDeleteDashboards).click()
 }
 
-module.exports = { navigate, ClickonContains, saveDashboard, deleteAllDashboards, randName, editDashboard };
+module.exports = { navigate, ClickOnContains, saveDashboard, deleteAllDashboards, editDashboard };

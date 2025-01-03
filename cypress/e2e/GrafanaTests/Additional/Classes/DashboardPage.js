@@ -1,8 +1,8 @@
 const { navigate,
-        ClickonContains,
+        ClickOnContains,
         saveDashboard,
         deleteAllDashboards} = require("../Functions/DashboardTestFunction");
-const { UsingSearch,
+const { usingSearch,
         goToLink } = require("../Functions/PageTestFunction");
 const {
     actions,
@@ -10,10 +10,10 @@ const {
 
 class DashboardPage {
     static createDashboard(term, timeRange) {
-        UsingSearch(term);
+        usingSearch(term);
         goToLink(`/dashboard/new`)
         actions.forEach(selector => navigate(selector));
-        ClickonContains(timeRange);
+        ClickOnContains(timeRange);
         additionalActions.forEach(selector => navigate(selector));
         saveDashboard();
     }

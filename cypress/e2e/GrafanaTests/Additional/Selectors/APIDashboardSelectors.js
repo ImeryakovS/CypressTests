@@ -3,7 +3,7 @@ const bodyForCreateFolder = {
     title: 'Folder for API Test'
 }
 
-let bodyForCreateDashboard = {
+const bodyForCreateDashboard = {
 
         'dashboard': {
         'id': null,

@@ -1,12 +1,11 @@
 const { loginSelectors, credentials } = require('../Selectors/LoginSelectors');
-const { goToLink } = require('../Functions/PageTestFunction')
 
 function sendResetEmail () {
     cy.get('[href="/user/password/send-reset-email"]').click()
     cy.url().should('include','/send-reset-email')
 }
 
-function Login(username,password) {
+function login(username,password) {
     cy.visit(`/login`)
     cy.get(loginSelectors.user).type(username)
     cy.get(loginSelectors.password).type(password)
@@ -32,7 +31,7 @@ function receiveNewCredentials () {
 function returnToLogin () {
     sendResetEmail()
     cy.get(loginSelectors.login).click()
-    Login(credentials.username, credentials.password);
+    login(credentials.username, credentials.password);
 }
 
 function checkErrorLoginMessage() {
@@ -52,7 +51,7 @@ function logout(link) {
 
 
 module.exports = {
-    Login,
+    login,
     containText,
     receiveNewCredentials,
     returnToLogin,

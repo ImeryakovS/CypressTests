@@ -1,5 +1,5 @@
 const {
-    Login,
+    login,
     receiveNewCredentials,
     returnToLogin,
     checkErrorLoginMessage} = require('../Functions/LoginTestFunction.js')
@@ -8,7 +8,7 @@ const { credentials } = require('../Selectors/LoginSelectors');
 
 class LoginPage {
     static successLogin() {
-        Login(credentials.username,credentials.password)
+        login(credentials.username,credentials.password)
     };
     static newCredentials() {
         receiveNewCredentials()

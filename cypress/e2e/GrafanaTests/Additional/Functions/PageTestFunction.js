@@ -9,7 +9,7 @@ function expandSection (label) { //открываем секции
     cy.get(`[aria-label="Expand section ${label}"]`).should('be.visible').click()
 }
 
-function UsingSearch (request) { //используем поиск и пишем туда что либо
+function usingSearch (request) { //используем поиск и пишем туда что либо
     cy.get(mainSelectors.search).should('be.visible').click()
     cy.get('[role="combobox"]', { timeout: 5000 }) //timeout для прогрузки поиска
     .should('be.visible')
@@ -29,4 +29,4 @@ function navigateLinks (links) { //переходим по ссылкам в ц�
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
 }
 
-module.exports = { expandSection, UsingSearch, navigateLinks, goToLink };
+module.exports = { expandSection, usingSearch, navigateLinks, goToLink };

@@ -1,6 +1,6 @@
 const { BasicAUTH} = require("../Selectors/APILoginSelectors");
 const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
-let { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
+const { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
 
 function createFolder() {
     return cy.request(

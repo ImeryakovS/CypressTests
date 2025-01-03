@@ -1,5 +1,5 @@
 const {
-    UsingSearch,
+    usingSearch,
     navigateLinks
 } = require("../Functions/PageTestFunction");
 const {
@@ -24,7 +24,7 @@ class MainPage {
         containText('div', 'Extend the UI of plugins and Grafana')
     }
     static Searching() {
-        UsingSearch('playlists')
+        usingSearch('playlists')
     }
 }
 

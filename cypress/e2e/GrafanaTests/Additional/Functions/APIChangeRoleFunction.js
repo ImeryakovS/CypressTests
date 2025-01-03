@@ -1,4 +1,4 @@
-const {BasicAUTH} = require("../Selectors/APILoginSelectors");
+const { BasicAUTH} = require("../Selectors/APILoginSelectors");
 
 function changeRole(roles) {
     const userId = Cypress.env('userId');
