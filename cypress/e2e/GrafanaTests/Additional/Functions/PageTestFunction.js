@@ -1,6 +1,6 @@
 const { mainSelectors } = require('../Selectors/MainSelectors')
 
-function navigateAndVerify (selector,urlPart) { // переходим по ссылке и верифицируем
+function navigateAndVerify (selector,urlPart) {
     cy.get(selector).should('be.visible').click()
         cy.url().should('include',urlPart)
 }
@@ -9,15 +9,18 @@ function expandSection (label) { //открываем секции
     cy.get(`[aria-label="Expand section ${label}"]`).should('be.visible').click()
 }
 
-function usingSearch (request) { //используем поиск и пишем туда что либо
+function usingSearch (request) {
     cy.get(mainSelectors.search).should('be.visible').click()
     cy.get('[role="combobox"]', { timeout: 5000 }) //timeout для прогрузки поиска
     .should('be.visible')
-    .first()
-    .type(request)
-    .wait(500)
-    .type('{enter}')
-    cy.url().should('include',`${request}`)
+    cy.get('[role="combobox"]').first().type(request)
+    cy.wait(500)
+    cy.get('[role="combobox"]').type('{enter}')
+    cy.url()
+        .then((url)=> {
+            expect(url.toLowerCase()).to.include(request.toLowerCase());
+        })
+        //.should('include',`${request}`)
 }
 
 function goToLink (link) {
@@ -29,4 +32,9 @@ function navigateLinks (links) { //переходим по ссылкам в ц�
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
 }
 
-module.exports = { expandSection, usingSearch, navigateLinks, goToLink };
+function randName () {
+    const random = Math.floor(Math.random() * 10000);
+    return 'randTest' + random.toString();
+}
+
+module.exports = { expandSection, usingSearch, navigateLinks, goToLink, randName };

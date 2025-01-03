@@ -1,3 +1,4 @@
+const { randName } = require('../Functions/PageTestFunction')
 
 const BasicAUTH = {
     Username : 'admin',
@@ -5,9 +6,9 @@ const BasicAUTH = {
 }
 
 const APICredentials = {
-    name :'APITest1',
-    email : 'APITest1@email.com',
-    login : 'APITest1',
+    name :'APITest1' + randName(),
+    email : 'APITest1@email.com' + randName(),
+    login : 'APITest1' + randName() ,
     password : 'test'
 }
 

@@ -1,4 +1,4 @@
-const { DashboardSelectors } = require('../Selectors/DashboardSelectors')
+const { DashboardSelectors, dashboardName } = require('../Selectors/DashboardSelectors')
 const { usingSearch } = require('../Functions/PageTestFunction')
 const { editDashboard } = require('../Functions/DashboardTestFunction')
 
@@ -8,7 +8,7 @@ function checkPermissionsViewer (link) {
 }
 
 function checkPermissionsEditor() {
-    usingSearch('testdashboard')
+    usingSearch(dashboardName.name)
     cy.get(DashboardSelectors.deleteDashboards).should('not.exist')
     editDashboard()
 }

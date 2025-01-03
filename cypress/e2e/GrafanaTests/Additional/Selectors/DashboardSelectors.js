@@ -1,3 +1,5 @@
+const { randName } = require('../Functions/PageTestFunction')
+
 const DashboardSelectors = {
     //Newpanel : '[href="dashboard/new"]',
     addVisualisation : '[data-testid="data-testid Create new panel button"]',
@@ -48,4 +50,9 @@ const additionalActions = [
     DashboardSelectors.saveDashboard
 ];
 
-module.exports = { DashboardSelectors, additionalActions, actions };
+const dashboardName = {
+    name : 'testDashboard' + randName(),
+    description : 'testDashboardDescription' + randName()
+}
+
+module.exports = { DashboardSelectors, additionalActions, actions, dashboardName };
