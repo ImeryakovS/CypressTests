@@ -43,6 +43,16 @@ const admin = [
     {selector : mainSelectors.adminExtensions, urlPart :'/admin/extensions'}
 ];
 
+const profileSelectors = {
+    iconProfile : '[aria-label="Profile"]',
+    linkProfile : '[href="/profile"]',
+    editUserProfileName : '[id="edit-user-profile-name"]',
+    editUserProfileEmail : '[id="edit-user-profile-email"]',
+    editUserProfileUsername : '[id="edit-user-profile-username"]',
+    saveChangesProfile : '[data-testid="data-testid-user-profile-save"]',
+    alertUserUpdated : '[data-testid="data-testid Alert success"]',
+}
+
 const sections = [
     'Dashboards',
     'Alerting',
@@ -50,4 +60,4 @@ const sections = [
     'Plugins and data',
 ];
 
-module.exports = { mainSelectors , dashboards, alerting, admin, sections }
+module.exports = { mainSelectors , dashboards, alerting, admin, sections, profileSelectors }

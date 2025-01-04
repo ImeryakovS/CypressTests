@@ -45,7 +45,7 @@ function checkErrorLoginMessage() {
     containText(loginSelectors.alert,'Password is required')
 }
 
-function logout(link) {
+function logout() {
     cy.visit('/logout')
 }
 

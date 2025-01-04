@@ -1,4 +1,4 @@
-const { mainSelectors } = require('../Selectors/MainSelectors')
+const { mainSelectors, profileSelectors } = require('../Selectors/MainSelectors')
 
 function navigateAndVerify (selector,urlPart) {
     cy.get(selector).should('be.visible').click()
@@ -37,4 +37,21 @@ function randName () {
     return 'randTest' + random.toString();
 }
 
-module.exports = { expandSection, usingSearch, navigateLinks, goToLink, randName };
+function clickAndType (selector, string) {
+    cy.get(selector).click()
+    cy.get(selector).type(string)
+}
+
+function checkUserProfile () {
+    cy.visit('/')
+    cy.get(profileSelectors.iconProfile).click()
+    cy.wait(100)
+    cy.get(profileSelectors.linkProfile).click()
+    clickAndType(profileSelectors.editUserProfileName, 'test1')
+    clickAndType(profileSelectors.editUserProfileEmail, 'test1Email')
+    clickAndType(profileSelectors.editUserProfileUsername, 'test1Username')
+    cy.get(profileSelectors.saveChangesProfile).click()
+    cy.get(profileSelectors.alertUserUpdated).should('be.visible')
+}
+
+module.exports = { expandSection, usingSearch, navigateLinks, goToLink, randName, checkUserProfile };

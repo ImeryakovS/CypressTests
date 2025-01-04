@@ -1,9 +1,13 @@
 const {
     usingSearch,
-    navigateLinks
+    navigateLinks,
+    checkUserProfile
 } = require("../Functions/PageTestFunction");
+
 const {
-    containText
+    containText,
+    login,
+    logout
 } = require("../Functions/LoginTestFunction");
 
 const {
@@ -11,6 +15,8 @@ const {
     alerting,
     admin
 } = require('../Selectors/MainSelectors.js')
+
+const { APICredentials } = require('../Selectors/APILoginSelectors')
 
 class MainPage {
     static goToDashboardLinks() {
@@ -25,6 +31,12 @@ class MainPage {
     }
     static Searching() {
         usingSearch('playlists')
+    }
+
+    static editProfile() {
+        login (APICredentials.login,APICredentials.password)
+        checkUserProfile ()
+        logout()
     }
 }
 
