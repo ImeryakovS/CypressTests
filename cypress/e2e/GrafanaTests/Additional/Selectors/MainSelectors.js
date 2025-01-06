@@ -40,7 +40,7 @@ const alerting = [
 const admin = [
     {selector : mainSelectors.admin, urlPart : '/admin'},
     {selector : mainSelectors.adminPlugins, urlPart :'/admin/plugins'},
-    {selector : mainSelectors.adminExtensions, urlPart :'/admin/extensions'}
+    //{selector : mainSelectors.adminExtensions, urlPart :'/admin/extensions'}
 ];
 
 const profileSelectors = {

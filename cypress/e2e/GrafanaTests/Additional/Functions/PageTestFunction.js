@@ -10,7 +10,8 @@ function expandSection (label) { //открываем секции
 }
 
 function usingSearch (request) {
-    cy.get(mainSelectors.search).should('be.visible').click()
+
+    cy.get('body').type('{ctrl}k')
     cy.get('[role="combobox"]', { timeout: 5000 }) //timeout для прогрузки поиска
     .should('be.visible')
     cy.get('[role="combobox"]').first().type(request)
