@@ -1,8 +1,9 @@
 const { deleteNewUser, createNewUser } = require('../Functions/APIUsersTestFunction.js')
+const { APICredentials} = require("../Selectors/APILoginSelectors");
 
 class APIUsersPage {
     static createApiUser () {
-        return createNewUser();
+        return createNewUser(APICredentials);
     }
     static deleteApiUser () {
         const userId = Cypress.env('userId');

@@ -1,6 +1,7 @@
-const { BasicAUTH, APICredentials, roles } = require('../Selectors/APILoginSelectors');
+const { BasicAUTH } = require('../Selectors/APILoginSelectors');
+const { SergeyCredentials } = require('../Selectors/APILoginSelectors');
 
- function createNewUser() {
+ function createNewUser(body) {
      return cy.request(
         {
             method: 'POST',
@@ -9,7 +10,7 @@ const { BasicAUTH, APICredentials, roles } = require('../Selectors/APILoginSelec
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
             },
-            body: APICredentials,
+            body: body,
             headers : {
                 'Content-Type': 'application/json'
             }
@@ -37,4 +38,27 @@ function deleteNewUser(userId) {
         });
 }
 
-module.exports = { deleteNewUser, createNewUser };
+function findUser() {
+    return cy.request(
+        {
+            method : 'GET',
+            url : `/api/users/lookup?loginOrEmail=${SergeyCredentials.login}`,
+            auth : {
+                username: BasicAUTH.Username,
+                password: BasicAUTH.Password
+            },
+            failOnStatusCode: false
+        }).then ( (response) => {
+            if (response.status === 200) {
+                expect(response.body.name).to.eq('sergeytest')
+                Cypress.env('Sergey', response.body.id)
+                return true;
+            } else {
+                Cypress.env('Sergey', null);
+                return false;
+            }
+
+    });
+}
+
+module.exports = { deleteNewUser, createNewUser, findUser };

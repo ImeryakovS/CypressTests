@@ -17,6 +17,11 @@
 import './commands';
 import '@shelex/cypress-allure-plugin';
 
+const { roles } = require('../e2e/GrafanaTests/Additional/Selectors/APILoginSelectors')
+const { changeRole } = require('../e2e/GrafanaTests/Additional/Functions/APIChangeRoleFunction.js')
+const { SergeyCredentials } = require('../e2e/GrafanaTests/Additional/Selectors/APILoginSelectors')
+const { createNewUser, findUser } = require('../e2e/GrafanaTests/Additional/Functions/APIUsersTestFunction.js')
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
@@ -32,28 +37,17 @@ Cypress.on('uncaught:exception', (err) => {
 });
 
 before(() => {
-    cy.log('Глобальный Before: Настройка окружения');
-    cy.request(
-        {
-            method: 'POST',
-            url : `/api/admin/users`,
-            auth : {
-                username: 'admin',
-                password: 'admin'
-            },
-            body: {
-                name :'sergeytest',
-                email : 'testing@test.ru',
-                login : 'sergeytest',
-                password : 'test'
-            },
-            headers : {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then ( (response) => {
-            expect(response.status).to.eq(200)
-            expect(response.body.message).to.eq('User created')
-            Cypress.env('userId', response.body.id)
-        })
-});
+    findUser().then((UserExists) => {
+        if(!UserExists) {
+            cy.log('Пользователь не найден, создаем нового')
+            createNewUser(SergeyCredentials)
+                .then (()=> {
+                    changeRole(roles.roleAdmin)
+                })
+        } else {
+            cy.log('Пользователь найден, пропускаем создание')
+        }
+    })
+})
+
+

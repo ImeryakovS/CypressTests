@@ -12,10 +12,17 @@ const APICredentials = {
     password : 'test'
 }
 
+const SergeyCredentials = {
+    name :'sergeytest',
+    email : 'testing@test.ru',
+    login : 'sergeytest',
+    password : 'test'
+}
+
 const roles = {
     roleEditor: { role: 'Editor' },
     roleAdmin: { role: 'Admin' },
     roleViewer: { role: 'Viewer' }
 };
 
-module.exports = { BasicAUTH, APICredentials, roles };
+module.exports = { BasicAUTH, APICredentials, SergeyCredentials, roles };

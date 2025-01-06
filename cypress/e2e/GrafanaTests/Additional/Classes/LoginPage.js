@@ -5,6 +5,7 @@ const {
     checkErrorLoginMessage} = require('../Functions/LoginTestFunction.js')
 const { deleteNewUser, createNewUser } = require('../Functions/APIUsersTestFunction.js')
 const { credentials } = require('../Selectors/LoginSelectors');
+const {  APICredentials} = require("../Selectors/APILoginSelectors");
 
 class LoginPage {
     static successLogin() {
@@ -20,7 +21,7 @@ class LoginPage {
         checkErrorLoginMessage()
     };
     static createApiUser () {
-        void createNewUser();
+        void createNewUser(APICredentials);
     }
     static deleteApiUser () {
         deleteNewUser();
