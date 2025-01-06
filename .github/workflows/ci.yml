@@ -3,7 +3,7 @@ name: Run Cypress Tests
 on:
   push:
     branches:
-      - CypressTestsMaster
+      - CICDBranch
   pull_request:
 
 jobs:
