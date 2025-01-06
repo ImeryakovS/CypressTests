@@ -33,4 +33,12 @@ Current state the Allure:
 
 ![Allure](./image/Allure.png)
 
+## Implement to CI/CD
+
+Now all tests implemented in GithubActions. 
+Start available only for me. 
+But you are possible check results on page with actions
+
+All settings in [ci.yml](./.github/workflows/ci.yml)
+
 
