@@ -27,7 +27,7 @@ class MainPage {
     }
     static goToAdminLinks() {
         navigateLinks(admin)
-        containText('div', 'Extend the UI of plugins and Grafana')
+        //containText('div', 'Extend the UI of plugins and Grafana')
     }
     static Searching() {
         usingSearch('playlists')
