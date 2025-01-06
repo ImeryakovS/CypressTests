@@ -49,4 +49,4 @@ jobs:
 
     # Шаг 5: Запускаем тесты
     - name: Run Cypress tests
-      run: npm run test
+      run: npm run RunAllTests
