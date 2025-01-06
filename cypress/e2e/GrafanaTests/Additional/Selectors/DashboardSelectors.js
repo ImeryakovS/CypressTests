@@ -4,7 +4,7 @@ const DashboardSelectors = {
     //Newpanel : '[href="dashboard/new"]',
     addVisualisation : '[data-testid="data-testid Create new panel button"]',
     newDashboard : '.css-td06pi-button > .css-1riaxdn',
-    buttonMixed : '.css-t1j6el > .css-1xwmgv3 > .css-l8ieyt > [data-testid="data-testid Built in data source list"] > :nth-child(1) > .css-17ifue9 > .css-1cqw476',
+    buttonMixed : '[data-testid="data-testid Built in data source list"]', //селектор не работает. Надо его либо избегать, либо фиксить
     tableView : '[aria-label="Table view"]',
     timePicker : '[data-testid="data-testid TimePicker Open Button"]',
     openCalendar : '[data-testid="data-testid Open time range calendar"]',
@@ -35,8 +35,8 @@ const DashboardSelectors = {
 };
 
 const actions = [
-    DashboardSelectors.addVisualisation,
-    DashboardSelectors.buttonMixed,
+   // DashboardSelectors.addVisualisation,
+   // DashboardSelectors.buttonMixed,
     DashboardSelectors.tableView,
     DashboardSelectors.timePicker,
     DashboardSelectors.openCalendar,

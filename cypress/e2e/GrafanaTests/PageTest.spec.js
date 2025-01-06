@@ -23,7 +23,7 @@ describe("Navigation for MainPage", () => {
             MainPage.goToAdminLinks();
         });
 
-        it.only ("User successfully using search", () => {
+        it ("User successfully using search", () => {
             MainPage.Searching();
         });
 });
