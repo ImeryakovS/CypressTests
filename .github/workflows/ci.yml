@@ -1,0 +1,43 @@
+name: Run Cypress Tests
+
+on:
+  push:
+    branches:
+      - CypressTestsMaster
+  pull_request:
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Шаг 1: Проверяем код из репозитория
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Шаг 2: Устанавливаем Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    # Шаг 3: Устанавливаем зависимости
+    - name: Install dependencies
+      run: npm install
+
+    # Шаг 4: Ждём, пока Grafana запустится
+    - name: Wait for Grafana
+      run: |
+        for i in {1..30}; do
+          if curl -s http://localhost:3000 | grep "Found"; then
+            echo "Grafana is ready!"
+            exit 0
+          fi
+          echo "Waiting for Grafana to start..."
+          sleep 2
+        done
+        echo "Grafana did not start in time!" && exit 1
+
+    # Шаг 5: Запускаем тесты
+    - name: Run Cypress tests
+      run: npm run test
