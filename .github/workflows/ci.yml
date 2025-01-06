@@ -10,6 +10,15 @@ jobs:
   cypress-tests:
     runs-on: ubuntu-latest
 
+    services:
+      grafana:
+        image: grafana/grafana:latest
+        ports:
+          - 3000:3000
+        options: >-
+          --env GF_SECURITY_ADMIN_PASSWORD=admin
+          --env GF_SECURITY_ADMIN_USER=admin
+
     steps:
     # Шаг 1: Проверяем код из репозитория
     - name: Checkout code
