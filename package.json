@@ -7,7 +7,7 @@
     "start": "tiny-server",
     "wget": "\"C:/ProgramData/chocolatey/bin/wget.exe\"",
     "cypress": "cypress",
-    "RunAllTests": "npx cypress run --spec \"cypress/e2e/GrafanaTests/**/*\"",
+    "RunAllTests": "npx cypress run --spec \"cypress/e2e/GrafanaTests/**/*\"  --env allure=true",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
     "allure:report": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",

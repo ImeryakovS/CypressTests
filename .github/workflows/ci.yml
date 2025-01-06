@@ -34,7 +34,16 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # Шаг 4: Ждём, пока Grafana запустится
+    # Шаг 4: Установка Cypress версии 12.14.0
+    - name: Install Cypress
+      run: npm install cypress@12.14.0 --save-dev
+
+    # Шаг 5: Устанавливаем Allure
+    - name: Install Allure
+      run: npm install allure-commandline --save-dev
+
+
+    # Шаг 6: Ждём, пока Grafana запустится
     - name: Wait for Grafana
       run: |
         for i in {1..30}; do
@@ -47,6 +56,13 @@ jobs:
         done
         echo "Grafana did not start in time!" && exit 1
 
-    # Шаг 5: Запускаем тесты
-    - name: Run Cypress tests
+      # Шаг 7: Запускаем тесты с генерацией отчётов Allure
+    - name: Run Cypress tests with Allure
       run: npm run RunAllTests
+
+      # Шаг 8: Сохраняем отчёты Allure как артефакты
+    - name: Upload Allure Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: ./allure-results
