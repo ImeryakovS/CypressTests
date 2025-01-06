@@ -1,10 +1,7 @@
 name: Run Cypress Tests
 
 on:
-  push:
-    branches:
-      - CICDBranch
-  pull_request:
+    workflow_dispatch:
 
 jobs:
   cypress-tests:
@@ -66,6 +63,7 @@ jobs:
       with:
         name: cypress-screenshots
         path: cypress/screenshots/
+      retention-days: 7
 
         # Загрузка видео как артефактов
     - name: Upload Cypress videos
@@ -73,22 +71,10 @@ jobs:
       with:
         name: cypress-videos
         path: cypress/videos/
+      retention-days: 7
 
       # Шаг 8: формирование отчета на основе json файлов
     - name: Generate Allure report
       run: npm run allure:report
-
-      # Шаг 9: Создание общей папки для артефактов
-    - name: Prepare Allure Results and Report
-      run: |
-        mkdir -p combined-allure
-        cp -r allure-results combined-allure/
-        cp -r allure-report combined-allure/
-
-      # Шаг 10: Сохраняем отчёты Allure как артефакты
-    - name: Upload Combined Allure Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-combined
-        path: combined-allure/
+      retention-days: 7
 
