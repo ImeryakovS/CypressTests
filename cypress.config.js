@@ -15,7 +15,9 @@ module.exports = defineConfig({
           openMode: 0,
       },
       watchForFileChanges: false,
-    },
+      screenshotsFolder: 'cypress/screenshots',
+      videosFolder: 'cypress/videos',
+  },
     env: {
       allure: true,
     },

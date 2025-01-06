@@ -80,3 +80,9 @@ jobs:
       with:
         name: allure-report
         path: ./allure-results
+
+    - name: "Debug: List Cypress Screenshots"
+      run: ls -la cypress/screenshots/
+
+    - name: "Debug: List Cypress Videos"
+      run: ls -la cypress/videos/
