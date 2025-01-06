@@ -78,10 +78,17 @@ jobs:
     - name: Generate Allure report
       run: npm run allure:report
 
-      # Шаг 9: Сохраняем отчёты Allure как артефакты
-    - name: Upload Allure Reports
+      # Шаг 9: Создание общей папки для артефактов
+    - name: Prepare Allure Results and Report
+      run: |
+        mkdir -p combined-allure
+        cp -r allure-results combined-allure/
+        cp -r allure-report combined-allure/
+
+      # Шаг 10: Сохраняем отчёты Allure как артефакты
+    - name: Upload Combined Allure Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: allure-report
-        path: ./allure-report/
+        name: allure-combined
+        path: combined-allure/
 
