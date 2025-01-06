@@ -1,7 +1,6 @@
 name: Run Cypress Tests
-
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   cypress-tests:
