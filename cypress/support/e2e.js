@@ -30,3 +30,30 @@ Cypress.on('uncaught:exception', (err) => {
 
     return true;
 });
+
+before(() => {
+    cy.log('Глобальный Before: Настройка окружения');
+    cy.request(
+        {
+            method: 'POST',
+            url : `/api/admin/users`,
+            auth : {
+                username: 'admin',
+                password: 'admin'
+            },
+            body: {
+                name :'sergeytest',
+                email : 'testing@test.ru',
+                login : 'sergeytest',
+                password : 'test'
+            },
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then ( (response) => {
+            expect(response.status).to.eq(200)
+            expect(response.body.message).to.eq('User created')
+            Cypress.env('userId', response.body.id)
+        })
+});
