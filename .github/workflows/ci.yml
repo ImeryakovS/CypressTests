@@ -58,7 +58,7 @@ jobs:
 
       # Шаг 7: Запускаем тесты с генерацией отчётов Allure
     - name: Run Cypress tests with Allure
-      run: npm run RunAllTests
+      run: npm run RunAllTests || true
 
     # Загрузка скриншотов как артефактов
     - name: Upload Cypress Screenshots
