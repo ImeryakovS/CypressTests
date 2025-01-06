@@ -38,7 +38,6 @@ jobs:
       - name: Install Allure
         run: npm install allure-commandline --save-dev
 
-
       # Шаг 6: Ждём, пока Grafana запустится
       - name: Wait for Grafana
         run: |
@@ -52,7 +51,7 @@ jobs:
           done
           echo "Grafana did not start in time!" && exit 1
 
-        # Шаг 7: Запускаем тесты с генерацией отчётов Allure
+      # Шаг 7: Запускаем тесты с генерацией отчётов Allure
       - name: Run Cypress tests with Allure
         run: npm run RunAllTests || true
 
@@ -62,18 +61,16 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots/
-        retention-days: 7
+          retention-days: 7
 
-        # Загрузка видео как артефактов
-      - name: Upload Cypress videos
+      # Загрузка видео как артефактов
+      - name: Upload Cypress Videos
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos/
-        retention-days: 7
+          retention-days: 7
 
-        # Шаг 8: формирование отчета на основе json файлов
+      # Шаг 8: формирование отчета на основе json файлов
       - name: Generate Allure report
         run: npm run allure:report
-        retention-days: 7
-
