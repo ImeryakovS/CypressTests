@@ -2,7 +2,7 @@ const { randName } = require('../Functions/PageTestFunction')
 
 const BasicAUTH = {
     Username : 'admin',
-    Password : '3cvqsdkw4'
+    Password : 'admin'
 }
 
 const APICredentials = {
