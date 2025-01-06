@@ -16,64 +16,64 @@ jobs:
           --env GF_SECURITY_ADMIN_USER=admin
 
     steps:
-    # Шаг 1: Проверяем код из репозитория
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # Шаг 1: Проверяем код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Шаг 2: Устанавливаем Node.js
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      # Шаг 2: Устанавливаем Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    # Шаг 3: Устанавливаем зависимости
-    - name: Install dependencies
-      run: npm install
+      # Шаг 3: Устанавливаем зависимости
+      - name: Install dependencies
+        run: npm install
 
-    # Шаг 4: Установка Cypress версии 12.14.0
-    - name: Install Cypress
-      run: npm install cypress@12.14.0 --save-dev
+      # Шаг 4: Установка Cypress версии 12.14.0
+      - name: Install Cypress
+        run: npm install cypress@12.14.0 --save-dev
 
-    # Шаг 5: Устанавливаем Allure
-    - name: Install Allure
-      run: npm install allure-commandline --save-dev
+      # Шаг 5: Устанавливаем Allure
+      - name: Install Allure
+        run: npm install allure-commandline --save-dev
 
 
-    # Шаг 6: Ждём, пока Grafana запустится
-    - name: Wait for Grafana
-      run: |
-        for i in {1..30}; do
-          if curl -s http://localhost:3000 | grep "Found"; then
-            echo "Grafana is ready!"
-            exit 0
-          fi
-          echo "Waiting for Grafana to start..."
-          sleep 2
-        done
-        echo "Grafana did not start in time!" && exit 1
+      # Шаг 6: Ждём, пока Grafana запустится
+      - name: Wait for Grafana
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:3000 | grep "Found"; then
+              echo "Grafana is ready!"
+              exit 0
+            fi
+            echo "Waiting for Grafana to start..."
+            sleep 2
+          done
+          echo "Grafana did not start in time!" && exit 1
 
-      # Шаг 7: Запускаем тесты с генерацией отчётов Allure
-    - name: Run Cypress tests with Allure
-      run: npm run RunAllTests || true
+        # Шаг 7: Запускаем тесты с генерацией отчётов Allure
+      - name: Run Cypress tests with Allure
+        run: npm run RunAllTests || true
 
-    # Загрузка скриншотов как артефактов
-    - name: Upload Cypress Screenshots
-      uses: actions/upload-artifact@v4
-      with:
-        name: cypress-screenshots
-        path: cypress/screenshots/
-      retention-days: 7
+      # Загрузка скриншотов как артефактов
+      - name: Upload Cypress Screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots/
+        retention-days: 7
 
         # Загрузка видео как артефактов
-    - name: Upload Cypress videos
-      uses: actions/upload-artifact@v4
-      with:
-        name: cypress-videos
-        path: cypress/videos/
-      retention-days: 7
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos/
+        retention-days: 7
 
-      # Шаг 8: формирование отчета на основе json файлов
-    - name: Generate Allure report
-      run: npm run allure:report
-      retention-days: 7
+        # Шаг 8: формирование отчета на основе json файлов
+      - name: Generate Allure report
+        run: npm run allure:report
+        retention-days: 7
 
