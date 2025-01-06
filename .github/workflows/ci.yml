@@ -66,7 +66,14 @@ jobs:
       with:
         name: cypress-screenshots
         path: cypress/screenshots/
-        
+
+        # Загрузка видео как артефактов
+    - name: Upload Cypress videos
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-videos
+        path: cypress/videos/
+
       # Шаг 8: Сохраняем отчёты Allure как артефакты
     - name: Upload Allure Reports
       uses: actions/upload-artifact@v3

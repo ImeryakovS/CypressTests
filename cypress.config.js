@@ -19,7 +19,7 @@ module.exports = defineConfig({
     env: {
       allure: true,
     },
-    video: false,
+    video: true,
 
     viewportWidth: 1920,
     viewportHeight: 1080,
