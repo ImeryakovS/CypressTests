@@ -60,6 +60,13 @@ jobs:
     - name: Run Cypress tests with Allure
       run: npm run RunAllTests
 
+    # Загрузка скриншотов как артефактов
+    - name: Upload Cypress Screenshots
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-screenshots
+        path: cypress/screenshots/
+        
       # Шаг 8: Сохраняем отчёты Allure как артефакты
     - name: Upload Allure Reports
       uses: actions/upload-artifact@v3
