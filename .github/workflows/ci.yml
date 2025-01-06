@@ -74,13 +74,14 @@ jobs:
         name: cypress-videos
         path: cypress/videos/
 
-      # Шаг 8: Сохраняем отчёты Allure как артефакты
+      # Шаг 8: формирование отчета на основе json файлов
+    - name: Generate Allure report
+      run: npm run allure:report
+
+      # Шаг 9: Сохраняем отчёты Allure как артефакты
     - name: Upload Allure Reports
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
         path: ./allure-results
-        
-      # Шаг 9: формирование отчета на основе json файлов
-    - name: Generate Allure report
-      run: npm run allure:report
+
