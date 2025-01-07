@@ -15,3 +15,5 @@ describe ('Hello test suite', ()=> {
 //про графану. Для того чтобы запустить нужно использовать команду "make run" в wsl среде
 
 //запуск в headless режиме npx cypress run --spec "cypress/e2e/GrafanaTests/**/*"
+
+

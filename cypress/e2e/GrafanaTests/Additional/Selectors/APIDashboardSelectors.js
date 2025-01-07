@@ -1,23 +1,21 @@
-
+"use strict";
+/// <reference path="./cypress.d.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
 const bodyForCreateFolder = {
     title: 'Folder for API Test'
-}
-
+};
 const bodyForCreateDashboard = {
-
-        'dashboard': {
-        'id': null,
-        'uid': null,
-        'title': "Dashboard for API",
-        'tags': [ "API" ],
-        'timezone': "browser",
-        'schemaVersion': 16,
-        'refresh': "25s"
-},
-        'folderUid': Cypress.env('folderUid'),
-        'message': "Create new dashboard with API",
-        'overwrite': false
-
-}
-
-module.exports = { bodyForCreateFolder, bodyForCreateDashboard }
+    dashboard: {
+        id: null,
+        uid: null,
+        title: "Dashboard for API",
+        tags: ["API"],
+        timezone: "browser",
+        schemaVersion: 16,
+        refresh: "25s"
+    },
+    folderUid: Cypress.env('folderUid'),
+    message: "Create new dashboard with API",
+    overwrite: false
+};
+module.exports = { bodyForCreateFolder, bodyForCreateDashboard };
