@@ -1,7 +1,6 @@
 const { randName } = require('../Functions/PageTestFunction')
 
 const DashboardSelectors = {
-    //Newpanel : '[href="dashboard/new"]',
     addVisualisation : '[data-testid="data-testid Create new panel button"]',
     newDashboard : '.css-td06pi-button > .css-1riaxdn',
     buttonMixed : '[data-testid="data-testid Built in data source list"]', //селектор не работает. Надо его либо избегать, либо фиксить

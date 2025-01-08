@@ -82,3 +82,21 @@ export const ProfileSelectorsKeys = [
 ] as const;
 
 export type TypeProfileSelectors = Record<typeof ProfileSelectorsKeys[number], string>;
+
+//Types for LoginSelectors
+
+export type TypeLoginSelectors = {
+    user: string;
+    password: string;
+    submit: string;
+    login: string;
+    userInput: string;
+    alertError: string;
+    alert: string;
+};
+
+export type TypeCredentials = {
+    username: string;
+    password: string;
+    email: string;
+}
