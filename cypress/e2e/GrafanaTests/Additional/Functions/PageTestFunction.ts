@@ -1,15 +1,18 @@
-const { profileSelectors } = require('../Selectors/MainSelectors')
+//Types from TypesFunction
+import { TypeLink } from './TypesFunctions'
+//Modules
+import { profileSelectors } from '../Selectors/MainSelectors'
 
-function navigateAndVerify (selector,urlPart) {
+export function navigateAndVerify (selector: string,urlPart: string): void {
     cy.get(selector).should('be.visible').click()
         cy.url().should('include',urlPart)
 }
 
-function expandSection (label) { //открываем секции
+export function expandSection (label: string): void { //открываем секции
     cy.get(`[aria-label="Expand section ${label}"]`).should('be.visible').click()
 }
 
-function usingSearch (request) {
+export function usingSearch (request: string): void {
 
     cy.get('body').type('{ctrl}k')
     cy.get('[role="combobox"]', { timeout: 5000 }) //timeout для прогрузки поиска
@@ -21,15 +24,14 @@ function usingSearch (request) {
         .then((url)=> {
             expect(url.toLowerCase()).to.include(request.toLowerCase());
         })
-        //.should('include',`${request}`)
 }
 
-function goToLink (link) {
+export function goToLink (link: string): void {
     cy.visit(link)
     cy.url().should('include', link)
 }
 
-function navigateLinks (links) { //переходим по ссылкам в цикле
+export function navigateLinks (links: TypeLink[]): void { //переходим по ссылкам в цикле
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
 }
 
@@ -38,12 +40,12 @@ export function randName () {
     return 'randTest' + random.toString();
 }
 
-function clickAndType (selector, string) {
+export function clickAndType (selector: string, credentials: string) {
     cy.get(selector).click()
-    cy.get(selector).type(string)
+    cy.get(selector).type(credentials)
 }
 
-function checkUserProfile () {
+export function checkUserProfile () {
     cy.visit('/')
     cy.get(profileSelectors.iconProfile).click()
     cy.wait(100)
@@ -54,5 +56,3 @@ function checkUserProfile () {
     cy.get(profileSelectors.saveChangesProfile).click()
     cy.get(profileSelectors.alertUserUpdated).should('be.visible')
 }
-
-module.exports = { expandSection, usingSearch, navigateLinks, goToLink, checkUserProfile };
