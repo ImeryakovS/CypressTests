@@ -46,3 +46,39 @@ export type TypeSergeyCredentials = {
 export type TypeRoles = {
     role: string;
 }
+
+
+//Types for MainSelectors
+export const mainSelectorKeys = [
+    'home',
+    'alertingList',
+    'alertingNotification',
+    'alertingRoutes',
+    'adminPlugins',
+    'adminExtensions',
+    'bookmarks',
+    'dashboards',
+    'playlists',
+    'dashboardSnapshots',
+    'libraryPanels',
+    'dashboardPublic',
+    'alerting',
+    'alertingSilences',
+    'alertingGroups',
+    'admin',
+    'search',
+] as const;
+
+export type TypeMainSelectors = Record<typeof mainSelectorKeys[number], string>;
+
+export const ProfileSelectorsKeys = [
+    'iconProfile',
+    'linkProfile',
+    'editUserProfileName',
+    'editUserProfileEmail',
+    'editUserProfileUsername',
+    'saveChangesProfile',
+    'alertUserUpdated',
+] as const;
+
+export type TypeProfileSelectors = Record<typeof ProfileSelectorsKeys[number], string>;

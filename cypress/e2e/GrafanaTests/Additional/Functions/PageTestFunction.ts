@@ -1,7 +1,7 @@
 //Types from TypesFunction
 import { TypeLink } from './TypesFunctions'
 //Modules
-import { profileSelectors } from '../Selectors/MainSelectors'
+import { profileSelectors }  from '../Selectors/MainSelectors'
 
 export function navigateAndVerify (selector: string,urlPart: string): void {
     cy.get(selector).should('be.visible').click()

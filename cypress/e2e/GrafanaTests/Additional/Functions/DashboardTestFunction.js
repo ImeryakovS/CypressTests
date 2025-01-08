@@ -1,6 +1,6 @@
 const { DashboardSelectors,
     dashboardName } = require("../Selectors/DashboardSelectors");
-const { mainSelectors } = require('../Selectors/MainSelectors.js')
+const { mainSelectors } = require('../Selectors/MainSelectors.ts')
 const { containText } = require('./LoginTestFunction.js')
 const { goToLink} = require("./PageTestFunction");
 

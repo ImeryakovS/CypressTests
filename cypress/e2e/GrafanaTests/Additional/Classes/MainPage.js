@@ -14,7 +14,7 @@ const {
     dashboards,
     alerting,
     admin
-} = require('../Selectors/MainSelectors.js')
+} = require('../Selectors/MainSelectors.ts')
 
 const { APICredentials } = require('../Selectors/APILoginSelectors')
 
