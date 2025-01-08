@@ -1,5 +1,5 @@
 const { MainPage } = require('./Additional/Classes/MainPage.js')
-const { expandSection} = require('./Additional/Functions/PageTestFunction.js')
+const { expandSection} = require('./Additional/Functions/PageTestFunction.ts')
 const { sections } = require('./Additional/Selectors/MainSelectors.js')
 const { login } = require('./Additional/Functions/LoginTestFunction.js')
 const { credentials } = require('./Additional/Selectors/LoginSelectors');

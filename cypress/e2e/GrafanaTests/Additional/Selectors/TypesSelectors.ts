@@ -1,8 +1,11 @@
-export interface TypeBodyForCreateFolder  {
+
+//Types for APIDashboardSelectors
+
+export type TypeBodyForCreateFolder = {
     title: string;
 }
 
-export type TypeDashboard = {
+type TypeDashboard = {
     id: null,
     uid: null,
     title: string,
@@ -18,3 +21,28 @@ export type TypeBodyForCreateDashboard = {
     message: string,
     overwrite: boolean
 };
+
+//Types for APILoginSelecrots
+
+export type TypeBasicAuth = {
+    Username: string;
+    Password: string;
+}
+
+export type TypeAPICredentials = {
+    name: string;
+    email: string;
+    login: string;
+    password: string;
+}
+
+export type TypeSergeyCredentials = {
+    name: string;
+    email: string;
+    login: string;
+    password: string;
+}
+
+export type TypeRoles = {
+    role: string;
+}

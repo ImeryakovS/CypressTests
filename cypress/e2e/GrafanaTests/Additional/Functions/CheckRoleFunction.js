@@ -1,5 +1,5 @@
 const { DashboardSelectors, dashboardName } = require('../Selectors/DashboardSelectors')
-const { usingSearch } = require('../Functions/PageTestFunction')
+const { usingSearch } = require('./PageTestFunction')
 const { editDashboard } = require('../Functions/DashboardTestFunction')
 
 function checkPermissionsViewer (link) {

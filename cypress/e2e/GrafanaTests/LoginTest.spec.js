@@ -1,5 +1,5 @@
 const { LoginPage } = require('./Additional/Classes/LoginPage.js')
-const { goToLink } = require('./Additional/Functions/PageTestFunction.js')
+const { goToLink } = require('./Additional/Functions/PageTestFunction.ts')
 
  describe("Test Login Page", () => {
     beforeEach(() => {

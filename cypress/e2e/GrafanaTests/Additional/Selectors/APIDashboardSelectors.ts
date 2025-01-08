@@ -1,14 +1,14 @@
 /// <reference path="./cypress.d.ts" />
 
-import { TypeBodyForCreateFolder } from './TypesSelectors';
-import { TypeBodyForCreateDashboard } from './TypesSelectors';
+import { TypeBodyForCreateFolder,
+        TypeBodyForCreateDashboard} from './TypesSelectors';
 
 
-const bodyForCreateFolder: TypeBodyForCreateFolder = {
+export const bodyForCreateFolder: TypeBodyForCreateFolder = {
     title: 'Folder for API Test'
 }
 
-const bodyForCreateDashboard: TypeBodyForCreateDashboard = {
+export const bodyForCreateDashboard: TypeBodyForCreateDashboard = {
         dashboard: {
         id: null,
         uid: null,
@@ -22,5 +22,3 @@ const bodyForCreateDashboard: TypeBodyForCreateDashboard = {
         message: "Create new dashboard with API",
         overwrite: false
 }
-
-module.exports = { bodyForCreateFolder, bodyForCreateDashboard }
