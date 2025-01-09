@@ -35,17 +35,17 @@ export function navigateLinks (links: TypeLink[]): void { //переходим �
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
 }
 
-export function randName () {
+export function randName ():string {
     const random = Math.floor(Math.random() * 10000);
     return 'randTest' + random.toString();
 }
 
-export function clickAndType (selector: string, credentials: string) {
+export function clickAndType (selector: string, credentials: string):void {
     cy.get(selector).click()
     cy.get(selector).type(credentials)
 }
 
-export function checkUserProfile () {
+export function checkUserProfile ():void {
     cy.visit('/')
     cy.get(profileSelectors.iconProfile).click()
     cy.wait(100)

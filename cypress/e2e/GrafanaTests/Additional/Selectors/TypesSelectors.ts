@@ -1,6 +1,8 @@
 
 //Types for APIDashboardSelectors
 
+import {randName} from "../Functions/PageTestFunction";
+
 export type TypeBodyForCreateFolder = {
     title: string;
 }
@@ -99,4 +101,40 @@ export type TypeCredentials = {
     username: string;
     password: string;
     email: string;
+}
+
+//Types for DashboardSelectors
+
+export type TypeDashboardSelectors = {
+    addVisualisation: string;
+    newDashboard: string;
+    buttonMixed: string;
+    tableView: string;
+    timePicker: string;
+    openCalendar: string;
+    inputTime: string;
+    timeRange: string;
+    refresh: string;
+    transformations: string;
+    alert: string;
+    discard: string;
+    buttonDiscard: string;
+    saveDashboard: string;
+    changesSaveDashboard: string;
+    detailsSaveDashboard: string;
+    titleFieldSaveDashboard: string;
+    descriptionSaveDashboard: string;
+    savingSaveDashboard: string;
+    editButton: string;
+    exitEditButton: string;
+    markAllDashboards: string;
+    deleteDashboards: string;
+    confirmDeleteDashboard: string;
+    finalDeleteDashboards: string;
+    childCheckboxes: string;
+};
+
+export type TypeDashboardName = {
+    name: string;
+    description: string;
 }

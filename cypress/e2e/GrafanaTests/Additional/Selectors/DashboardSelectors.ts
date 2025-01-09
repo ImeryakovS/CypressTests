@@ -1,0 +1,58 @@
+//Types from TypesSelectors
+import { TypeDashboardSelectors,
+    TypeDashboardName} from "./TypesSelectors";
+
+//Functions
+import { randName } from '../Functions/PageTestFunction';
+
+export const DashboardSelectors: TypeDashboardSelectors = {
+    addVisualisation : '[data-testid="data-testid Create new panel button"]',
+    newDashboard : '.css-td06pi-button > .css-1riaxdn',
+    buttonMixed : '[data-testid="data-testid Built in data source list"]', //селектор не работает. Надо его либо избегать, либо фиксить
+    tableView : '[aria-label="Table view"]',
+    timePicker : '[data-testid="data-testid TimePicker Open Button"]',
+    openCalendar : '[data-testid="data-testid Open time range calendar"]',
+    inputTime : '[placeholder="Search quick ranges"]',
+    timeRange : '[aria-roledescription="Time range selection"]',
+    refresh : '[data-testid="data-testid RefreshPicker run button"]',
+    transformations : '[data-testid="data-testid Tab Transformations"]',
+    alert : '[data-testid="data-testid Tab Alert"]',
+    discard : '[data-testid="data-testid Discard changes button"]',
+    buttonDiscard : '.css-ttl745-button',
+    //saveDashboards selectors
+    saveDashboard : '[data-testid="data-testid Save dashboard button"]',
+    changesSaveDashboard : '[data-testid="data-testid Tab Changes"]',
+    detailsSaveDashboard : '[data-testid="data-testid Tab Details"]',
+    titleFieldSaveDashboard: '[aria-label="Save dashboard title field"]',
+    descriptionSaveDashboard: '[aria-label="Save dashboard description field"]',
+    savingSaveDashboard : '[data-testid="data-testid Save dashboard drawer button"]',
+    //editDashboards
+    editButton : '[data-testid="data-testid Edit dashboard button"]',
+    exitEditButton : '[data-testid="data-testid Exit edit mode button"]',
+    //deleteDashboards selectors
+    markAllDashboards : '[role="columnheader"] [class="css-11ty15i"]', //'[role="columnheader"] [type="checkbox"] [class="css-11ty15i"]',
+    deleteDashboards : '[class="css-ttl745-button"] [class="css-1riaxdn"]',
+    confirmDeleteDashboard : '[role="dialog"] [data-testid="input-wrapper"]',
+    finalDeleteDashboards : '[data-testid="data-testid Confirm Modal Danger Button"]',
+    childCheckboxes : '[data-testid*="data-testid"][data-testid*="checkbox"]'
+
+};
+
+export const actions: Array<keyof TypeDashboardSelectors> = [
+    'tableView',
+    'timePicker',
+    'openCalendar',
+    'inputTime',
+];
+
+export const additionalActions: Array<keyof TypeDashboardSelectors> = [
+    'refresh',
+    'transformations',
+    'alert',
+    'saveDashboard',
+];
+
+export const dashboardName: TypeDashboardName = {
+    name : 'testDashboard' + randName(),
+    description : 'testDashboardDescription' + randName()
+}
