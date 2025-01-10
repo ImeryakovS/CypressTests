@@ -2,7 +2,7 @@ const {
     login,
     receiveNewCredentials,
     returnToLogin,
-    checkErrorLoginMessage} = require('../Functions/LoginTestFunction.js')
+    checkErrorLoginMessage} = require('../Functions/LoginTestFunction.ts')
 const { deleteNewUser, createNewUser } = require('../Functions/APIUsersTestFunction.js')
 const { credentials } = require('../Selectors/LoginSelectors');
 const {  APICredentials} = require("../Selectors/APILoginSelectors");

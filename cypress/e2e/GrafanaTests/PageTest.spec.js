@@ -1,7 +1,7 @@
 const { MainPage } = require('./Additional/Classes/MainPage.js')
 const { expandSection} = require('./Additional/Functions/PageTestFunction.ts')
 const { sections } = require('./Additional/Selectors/MainSelectors.ts')
-const { login } = require('./Additional/Functions/LoginTestFunction.js')
+const { login } = require('./Additional/Functions/LoginTestFunction.ts')
 const { credentials } = require('./Additional/Selectors/LoginSelectors');
 
 describe("Navigation for MainPage", () => {

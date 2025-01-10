@@ -1,5 +1,5 @@
 const { DashboardPage } = require('./Additional/Classes/DashboardPage.js')
-const { login} = require('./Additional/Functions/LoginTestFunction.js')
+const { login} = require('./Additional/Functions/LoginTestFunction.ts')
 const { credentials } = require('./Additional/Selectors/LoginSelectors');
 
 describe ("Test for dashboard", () => {

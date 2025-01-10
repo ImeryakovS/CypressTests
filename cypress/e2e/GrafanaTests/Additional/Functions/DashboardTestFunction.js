@@ -1,7 +1,7 @@
 const { DashboardSelectors,
     dashboardName } = require("../Selectors/DashboardSelectors");
 const { mainSelectors } = require('../Selectors/MainSelectors.ts')
-const { containText } = require('./LoginTestFunction.js')
+const { containText } = require('./LoginTestFunction.ts')
 const { goToLink} = require("./PageTestFunction");
 
 function navigate (selector) {
