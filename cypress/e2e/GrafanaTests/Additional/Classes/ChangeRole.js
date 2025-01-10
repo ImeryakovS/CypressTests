@@ -1,7 +1,7 @@
 const { changeRole } = require('../Functions/APIChangeRoleFunction.js')
 const { APIUsersPage } = require("./APIUsersPage");
 const { checkPermissionsViewer,
-    checkPermissionsEditor } = require('../Functions/CheckRoleFunction.js')
+    checkPermissionsEditor } = require('../Functions/CheckRoleFunction.ts')
 
 class ChangeRole  {
     static  createAndChangeRoleForApiUser(roles) {
