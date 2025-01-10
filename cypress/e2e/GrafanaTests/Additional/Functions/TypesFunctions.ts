@@ -32,3 +32,7 @@ export interface IDeleteDashboardResponse {
 export interface IDeleteDashboardFolderResponse {
     message: string
 }
+
+export interface IChangeRoleUserResponse {
+    message: string
+}

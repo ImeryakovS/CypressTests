@@ -1,4 +1,4 @@
-const { changeRole } = require('../Functions/APIChangeRoleFunction.js')
+const { changeRole } = require('../Functions/APIChangeRoleFunction.ts')
 const { APIUsersPage } = require("./APIUsersPage");
 const { checkPermissionsViewer,
     checkPermissionsEditor } = require('../Functions/CheckRoleFunction.ts')

@@ -1,6 +1,8 @@
-const { BasicAUTH} = require("../Selectors/APILoginSelectors");
+import { BasicAUTH } from '../Selectors/APILoginSelectors';
+import { TypeRoles } from '../Selectors/TypesSelectors'
+import { IChangeRoleUserResponse } from './TypesFunctions'
 
-function changeRole(roles) {
+export function changeRole(roles: TypeRoles): Cypress.Chainable<Cypress.Response<IChangeRoleUserResponse>> {
     const userId = Cypress.env('userId');
     return cy.request(
         {
@@ -16,5 +18,3 @@ function changeRole(roles) {
         expect(response.body.message).to.eq('Organization user updated')
     });
 }
-
-module.exports = { changeRole }
