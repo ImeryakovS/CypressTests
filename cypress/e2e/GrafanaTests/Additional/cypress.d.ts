@@ -2,8 +2,9 @@
 
 declare namespace Cypress {
     interface Env {
-        folderUid: string;
-        userId: string;
+        folderUid: number;
+        userId: number;
+        dashboardUId: number
     }
 }
 

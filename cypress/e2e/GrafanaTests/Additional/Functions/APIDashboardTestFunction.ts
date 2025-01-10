@@ -1,8 +1,12 @@
-const { BasicAUTH} = require("../Selectors/APILoginSelectors");
-const { bodyForCreateFolder } = require("../Selectors/APIDashboardSelectors");
-const { bodyForCreateDashboard } = require("../Selectors/APIDashboardSelectors");
+import { BasicAUTH } from '../Selectors/APILoginSelectors';
+import { bodyForCreateFolder } from '../Selectors/APIDashboardSelectors';
+import { bodyForCreateDashboard } from '../Selectors/APIDashboardSelectors';
+import { ICreateDashboardFolderResponse,
+    ICreateDashboardResponse,
+    IDeleteDashboardResponse,
+    IDeleteDashboardFolderResponse} from './TypesFunctions'
 
-function createFolder() {
+export function createFolder():Cypress.Chainable<Cypress.Response<ICreateDashboardFolderResponse>> {
     return cy.request(
         {
             method: 'POST',
@@ -23,7 +27,7 @@ function createFolder() {
         })
 }
 
-function createDashboardApi() {
+export function createDashboardApi(): Cypress.Chainable<Cypress.Response<ICreateDashboardResponse>> {
     const folderUid = Cypress.env('folderUid')
     if (!folderUid) {
         throw new Error('folder UID is missing')
@@ -49,7 +53,7 @@ function createDashboardApi() {
         })
 }
 
-function deleteDashboard() {
+export function deleteDashboard(): Cypress.Chainable<Cypress.Response<IDeleteDashboardResponse>> {
     const dashboardUId = Cypress.env('dashboardUId')
     if (!dashboardUId) {
         throw new Error('Dashboard UID is missing')
@@ -74,7 +78,7 @@ function deleteDashboard() {
         })
 }
 
-function deleteFolder() {
+export function deleteFolder(): Cypress.Chainable<Cypress.Response<IDeleteDashboardFolderResponse>> {
     const folderUid = Cypress.env('folderUid')
     if (!folderUid) {
         throw new Error('folder UID is missing')
@@ -97,5 +101,3 @@ function deleteFolder() {
             expect(response.body.message).to.eq('Folder deleted')
         })
 }
-
-module.exports = { createFolder, deleteFolder, createDashboardApi, deleteDashboard }
