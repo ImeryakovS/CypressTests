@@ -1,7 +1,9 @@
 ## About my project
 
 My project with test for Grafana. It's a public demonstration for my skills in autotests. 
-I'm learning JS + Cypress currently. And my repository and code will be changed.
+I'm learning JS/TS + Cypress currently. And my repository and code will be changed.
+
+<u>Now I am moving project to TypeScript on the branch TypescriptTests</u>
 
 I will add information about setup tests and environment as soon as possible
 
