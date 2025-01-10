@@ -20,7 +20,7 @@ import '@shelex/cypress-allure-plugin';
 const { roles } = require('../e2e/GrafanaTests/Additional/Selectors/APILoginSelectors')
 const { changeRole } = require('../e2e/GrafanaTests/Additional/Functions/APIChangeRoleFunction.js')
 const { SergeyCredentials } = require('../e2e/GrafanaTests/Additional/Selectors/APILoginSelectors')
-const { createNewUser, findUser } = require('../e2e/GrafanaTests/Additional/Functions/APIUsersTestFunction.js')
+const { createNewUser, findUser } = require('../e2e/GrafanaTests/Additional/Functions/APIUsersTestFunction.ts')
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

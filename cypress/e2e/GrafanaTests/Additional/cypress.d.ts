@@ -3,6 +3,7 @@
 declare namespace Cypress {
     interface Env {
         folderUid: string;
+        userId: string;
     }
 }
 

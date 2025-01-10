@@ -1,4 +1,4 @@
-const { deleteNewUser, createNewUser } = require('../Functions/APIUsersTestFunction.js')
+const { deleteNewUser, createNewUser } = require('../Functions/APIUsersTestFunction.ts')
 const { APICredentials} = require("../Selectors/APILoginSelectors");
 
 class APIUsersPage {
