@@ -1,6 +1,6 @@
 const { DashboardSelectors, dashboardName } = require('../Selectors/DashboardSelectors')
 const { usingSearch } = require('./PageTestFunction')
-const { editDashboard } = require('../Functions/DashboardTestFunction')
+const { editDashboard } = require('./DashboardTestFunction')
 
 function checkPermissionsViewer (link) {
     cy.visit(`${link}`)
