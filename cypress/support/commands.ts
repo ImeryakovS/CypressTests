@@ -25,10 +25,10 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-real-events';
 
-const {loginSelectors} = require("../e2e/GrafanaTests/Additional/Selectors/LoginSelectors");
+/*const {loginSelectors} = require("../e2e/GrafanaTests/Additional/Selectors/LoginSelectors");
 Cypress.Commands.add('login', (email, password) => {
     cy.visit("http://localhost:3000/login")
     cy.get('[name="user"]').type(email)
     cy.get('[name="password"]').type(password)
     cy.get('[type="submit"]').click()
-})
+})*/
