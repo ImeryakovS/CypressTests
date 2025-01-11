@@ -1,4 +1,4 @@
-const { DashboardPage } = require('./Additional/Classes/DashboardPage.js')
+const { DashboardPage } = require('./Additional/Classes/DashboardPage.ts')
 const { login} = require('./Additional/Functions/LoginTestFunction.ts')
 const { credentials } = require('./Additional/Selectors/LoginSelectors');
 
