@@ -1,4 +1,4 @@
-const { LoginPage } = require('./Additional/Classes/LoginPage.js')
+const { LoginPage } = require('./Additional/Classes/LoginPage.ts')
 const { goToLink } = require('./Additional/Functions/PageTestFunction.ts')
 
  describe("Test Login Page", () => {
