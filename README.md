@@ -3,14 +3,17 @@
 My project with test for Grafana. It's a public demonstration for my skills in autotests. 
 I'm learning JS/TS + Cypress currently. And my repository and code will be changed.
 
-<u>Now I am moving project to TypeScript on the branch TypescriptTests</u>
+<u>My project based on TypeScript now</u>
 
 I will add information about setup tests and environment as soon as possible
+
+All test placed in Cypress directory
 
 ## Requirements
 
 1) Cypress 12.14.0
 2) Allure 2.40.2
+3) TypeScript 5.7.2
 
 ## How to use my tests?
 1) Install Grafana on local machine from https://github.com/grafana/grafana with any comfortable option
