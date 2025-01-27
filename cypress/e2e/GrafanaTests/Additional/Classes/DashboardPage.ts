@@ -8,9 +8,9 @@ export class DashboardPage {
         goToLink(`/dashboard/new`)
         cy.get(DashboardSelectors.addVisualisation).click()
         cy.contains('Use multiple data sources').click({force : true})
-        actions.forEach(selector => navigate(selector));
+        actions.forEach(selector => navigate(DashboardSelectors[selector]));
         ClickOnContains(timeRange);
-        additionalActions.forEach(selector => navigate(selector));
+        additionalActions.forEach(selector => navigate(DashboardSelectors[selector]));
         saveDashboard();
     }
     static deleteAllDashboards (): void {
