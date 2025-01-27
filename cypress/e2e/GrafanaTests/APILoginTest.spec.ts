@@ -1,4 +1,4 @@
-const { APIUsersPage } = require("./Additional/Classes/APIUsersPage");
+import { APIUsersPage } from "./Additional/Classes/APIUsersPage";
 
 describe ("API tests", () => {
     it ("User successfully created with API methods and deleted user after", () => {

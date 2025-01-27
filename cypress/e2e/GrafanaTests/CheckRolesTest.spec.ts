@@ -1,9 +1,9 @@
-const { APIUsersPage } = require("./Additional/Classes/APIUsersPage");
-const { DashboardPage } = require("./Additional/Classes/DashboardPage");
-const { ChangeRole } = require("./Additional/Classes/ChangeRole");
-const { roles, APICredentials } = require('./Additional/Selectors/APILoginSelectors');
-const { login, logout} = require("./Additional/Functions/LoginTestFunction");
-const { credentials} = require("./Additional/Selectors/LoginSelectors");
+import {APIUsersPage} from "./Additional/Classes/APIUsersPage";
+import {DashboardPage} from "./Additional/Classes/DashboardPage";
+import {ChangeRole} from "./Additional/Classes/ChangeRole";
+import {roles, APICredentials} from './Additional/Selectors/APILoginSelectors';
+import {login, logout} from "./Additional/Functions/LoginTestFunction";
+import {credentials} from "./Additional/Selectors/LoginSelectors";
 
 
 describe ("Create admin user and check role permissions", () => {
@@ -38,12 +38,12 @@ describe ("Create editor user and check role permissions", () => {
         cy.log('Created testDashboard for test environment with admin')
         login(credentials.username,credentials.password)
         DashboardPage.createDashboard("dashboard","Last 15 minutes")
-        logout('/logout')
+        logout()
     })
 
     after (() => {
         cy.log('Deleted testDashboard for test environment with admin')
-        logout('/logout')
+        logout()
         login(credentials.username,credentials.password)
         DashboardPage.deleteAllDashboards()
     })
