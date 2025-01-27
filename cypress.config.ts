@@ -8,7 +8,7 @@ module.exports = defineConfig({
           allureWriter(on, config);
           return config;
       },
-      specPattern: 'cypress/e2e/**/*.spec.js',// путь к тестам
+      specPattern: 'cypress/e2e/**/*.spec.ts',// путь к тестам
       baseUrl: 'http://localhost:3000',
       retries: {
           runMode: 0,
