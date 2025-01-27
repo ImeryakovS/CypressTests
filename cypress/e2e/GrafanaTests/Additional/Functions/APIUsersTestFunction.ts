@@ -1,7 +1,9 @@
-const { BasicAUTH } = require('../Selectors/APILoginSelectors');
-const { SergeyCredentials } = require('../Selectors/APILoginSelectors');
+import { BasicAUTH } from '../Selectors/APILoginSelectors';
+import { SergeyCredentials } from '../Selectors/APILoginSelectors';
+import { TypeAPICredentials } from '../Selectors/TypesSelectors';
+import { ICreateUserResponse, IDeleteUserResponse } from './TypesFunctions'
 
- function createNewUser(body) {
+ export function createNewUser(body: TypeAPICredentials): Cypress.Chainable<Cypress.Response<ICreateUserResponse>> {
      return cy.request(
         {
             method: 'POST',
@@ -10,7 +12,7 @@ const { SergeyCredentials } = require('../Selectors/APILoginSelectors');
                 username: BasicAUTH.Username,
                 password: BasicAUTH.Password
             },
-            body: body,
+            body: JSON.stringify(body),
             headers : {
                 'Content-Type': 'application/json'
             }
@@ -22,7 +24,7 @@ const { SergeyCredentials } = require('../Selectors/APILoginSelectors');
         })
 }
 
-function deleteNewUser(userId) {
+export function deleteNewUser(userId: string): Cypress.Chainable<Cypress.Response<IDeleteUserResponse>> {
     cy.log(`Deleting user with ID: ${userId}`)
         return cy.request(
             {
@@ -38,7 +40,7 @@ function deleteNewUser(userId) {
         });
 }
 
-function findUser() {
+export function findUser(): Cypress.Chainable<boolean> {
     return cy.request(
         {
             method : 'GET',
@@ -60,5 +62,3 @@ function findUser() {
 
     });
 }
-
-module.exports = { deleteNewUser, createNewUser, findUser };

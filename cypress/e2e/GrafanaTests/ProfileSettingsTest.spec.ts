@@ -1,5 +1,5 @@
-const { MainPage } = require("./Additional/Classes/MainPage");
-const { APIUsersPage } = require("./Additional/Classes/APIUsersPage");
+import {MainPage} from "./Additional/Classes/MainPage";
+import {APIUsersPage} from "./Additional/Classes/APIUsersPage";
 
 describe ("Tests for user profile", () => {
     it ("User successfully created with API methods, login and check profile settings", () => {

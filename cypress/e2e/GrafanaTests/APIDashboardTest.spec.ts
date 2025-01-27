@@ -1,4 +1,4 @@
-const { createFolderAndDashboard } = require("./Additional/Classes/APIDashboardPage")
+import { createFolderAndDashboard } from "./Additional/Classes/APIDashboardPage"
 
 describe ("Create folder and dashboards with API", () => {
     it ("User successfully created folder for dashboards with API",() => {
