@@ -9,8 +9,8 @@ type ExternalLinkCheckOptions = {
 
 export function checkExternalLink (options: ExternalLinkCheckOptions): void {
     const {selector, childIndex, htmlTag, index, containWord } = options;
-    
-    cy.get(selector) //В этом куске кода мы переходим на дочерний элемент и проверяем статус кода ответа. Надо запихать в функцию
+
+    cy.get(selector) 
         .eq(childIndex)
         .within(():void => {
             cy.get(htmlTag).eq(index).contains(containWord)
