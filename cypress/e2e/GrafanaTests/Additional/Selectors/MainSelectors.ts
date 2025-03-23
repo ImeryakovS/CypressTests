@@ -65,3 +65,10 @@ export const sections: string[] = [
 export const mainLinksSelectors: TypeMainLinksSelectors = {
     mainPageLinks : '[data-testid="data-testid panel content"]'
 }
+
+export const externalLinkWelcome = [
+    {index: 0, text: "Documentation"},
+    {index: 1, text: "Tutorials"},
+    {index: 2, text: "Community"},
+    {index: 3, text: "Public Slack"},
+];

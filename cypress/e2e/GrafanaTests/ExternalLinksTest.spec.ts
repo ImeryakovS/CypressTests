@@ -1,5 +1,6 @@
 import {login} from "./Additional/Functions/LoginTestFunction";
 import {credentials} from "./Additional/Selectors/LoginSelectors";
+import {ExternalLinks} from "./Additional/Classes/ExternalLinksClass";
 
 describe ("Check external links", ()=> {
 
@@ -8,6 +9,6 @@ describe ("Check external links", ()=> {
     })
 
     it ("Check main links", () => {
-
+        ExternalLinks.goToExternalLinks();
     })
 })
