@@ -1,13 +1,23 @@
-## About my project
+## About this project
 
-My project with test for Grafana. It's a public demonstration for my skills in autotests. 
-I'm learning JS/TS + Cypress currently. And my repository and code will be changed.
+[![CI](https://github.com/ImeryakovS/CypressTests/actions/workflows/ci.yml/badge.svg)](https://github.com/ImeryakovS/CypressTests/actions)
+![Cypress](https://img.shields.io/badge/cypress-12.14.0-brightgreen)
 
-<u>My project based on TypeScript now</u>
+This is an automated testing project for **Grafana**, built with **Cypress** and **TypeScript**.  
+It serves as a public demonstration of my automation testing skills.
 
-I will add information about setup tests and environment as soon as possible
+> ⚙️ I'm currently learning JavaScript/TypeScript and Cypress. This repository is a work in progress, and improvements are continuously being made.
 
-All test placed in Cypress directory
+> 🔹 The project is now fully written in **TypeScript**.
+
+
+📁 All tests are located in `cypress/e2e/GrafanaTests`.  
+Support code (classes, functions, selectors) is located in the `Additional` folder.
+
+---
+
+![Demo](./Demo/aboutProject.gif)
+---
 
 ## Requirements
 
@@ -15,35 +25,41 @@ All test placed in Cypress directory
 2) Allure 2.40.2
 3) TypeScript 5.7.2
 
-## How to use my tests?
-1) Install Grafana on local machine from https://github.com/grafana/grafana with any comfortable option
-2) Start Grafana (check that this address is true http://localhost:3000/)
+---
+
+## How to run the tests
+
+1) Install Grafana locally: https://github.com/grafana/grafana (choose any convenient method)
+2) Start Grafana and ensure it's available at: `http://localhost:3000/`
 3) Clone this repository on your machine
-4) Go to directory `CypressTests` and run in the command Line `npx cypress open`
-5) Choose directory `e2e/GrafanaTests` in Cypress (default directory may delete)
-6) Choose any test and run with graphic interface (or console with command `npx cypress run --spec "cypress/e2e/GrafanaTests/*.cy.js"`)
+4) Navigate to the project folder and run: `npx cypress open`
+5) In the Cypress UI, go to e2e/GrafanaTests (you may delete the default example folder)
+6) Select and run any test using the graphical interface (or run via CLI: `npx cypress run --spec "cypress/e2e/GrafanaTests/*.cy.js"`)
+
+---
 
 ## Allure
 
-I used Allure report system for creating reports
-How to use it?
+This project uses Allure for generating detailed test reports.
 
-1) Install Cypress 12.14.0 (New version of Cypress (13+) don't work with Allure)
-2) Install [Allure](https://github.com/Shelex/cypress-allure-plugin)
-3) Run all tests with command `npx cypress run --spec "cypress/e2e/**/*.spec.js" --env allure=true`
-4) Run `npm run allure:report` for create reports
-5) Run `npm run allure:open` for open and view all reports
+> ⚠️ Note: Allure does not work with Cypress v13+ as of now. Use Cypress 12.14.0.
 
-Current state the Allure:
+1) Install [Allure](https://github.com/Shelex/cypress-allure-plugin)
+2) Run tests Allure enabled: `npx cypress run --spec "cypress/e2e/**/*.spec.js" --env allure=true`
+3) Generate the report: `npm run allure:report`
+4) Open the report in browser: `npm run allure:open`
+
+Current Allure example:
 
 ![Allure](./image/Allure.png)
 
-## Implement to CI/CD
+---
 
-Now all tests implemented in GithubActions. 
-Start available only for me. 
-But you are possible check results on page with actions
+## CI/CD Integration
 
-All settings in [ci.yml](./.github/workflows/ci.yml)
+All tests are integrated with GitHub Actions.
+While test execution is currently available only for me, you can view the results in the Actions tab.
 
+All CI settings are located in [ci.yml](./.github/workflows/ci.yml)
 
+---

@@ -3,6 +3,11 @@ import { TypeLink } from './TypesFunctions'
 //Modules
 import { profileSelectors }  from '../Selectors/MainSelectors'
 
+export function randName ():string {
+    const random = Math.floor(Math.random() * 10000);
+    return 'randTest' + random.toString();
+}
+
 export function navigateAndVerify (selector: string,urlPart: string): void {
     cy.get(selector).should('be.visible').click()
         cy.url().should('include',urlPart)
@@ -33,11 +38,6 @@ export function goToLink (link: string): void {
 
 export function navigateLinks (links: TypeLink[]): void { //переходим по ссылкам в цикле
     links.forEach(({selector,urlPart}) => navigateAndVerify(selector,urlPart));
-}
-
-export function randName ():string {
-    const random = Math.floor(Math.random() * 10000);
-    return 'randTest' + random.toString();
 }
 
 export function clickAndType (selector: string, credentials: string):void {

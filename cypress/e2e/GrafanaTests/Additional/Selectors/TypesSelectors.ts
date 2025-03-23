@@ -1,8 +1,6 @@
 
 //Types for APIDashboardSelectors
 
-import {randName} from "../Functions/PageTestFunction";
-
 export type TypeBodyForCreateFolder = {
     title: string;
 }
