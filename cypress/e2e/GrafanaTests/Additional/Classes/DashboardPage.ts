@@ -7,7 +7,12 @@ export class DashboardPage {
         usingSearch(term);
         goToLink(`/dashboard/new`)
         cy.get(DashboardSelectors.addVisualisation).click()
-        cy.contains('Use multiple data sources').click({force : true})
+        cy.get(DashboardSelectors.buttonMixed)
+            .eq(1)
+            .within(():void => {
+            cy.get('div').eq(0).contains("Mixed")
+                .click();
+        })
         actions.forEach(selector => navigate(DashboardSelectors[selector]));
         ClickOnContains(timeRange);
         additionalActions.forEach(selector => navigate(DashboardSelectors[selector]));
