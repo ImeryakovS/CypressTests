@@ -1,4 +1,4 @@
-import {mainLinksSelectors} from "../Selectors/MainSelectors";
+
 type ExternalLinkCheckOptions = {
     selector: string;
     childIndex: number;
@@ -10,7 +10,7 @@ type ExternalLinkCheckOptions = {
 export function checkExternalLink (options: ExternalLinkCheckOptions): void {
     const {selector, childIndex, htmlTag, index, containWord } = options;
 
-    cy.get(selector) 
+    cy.get(selector)
         .eq(childIndex)
         .within(():void => {
             cy.get(htmlTag).eq(index).contains(containWord)
