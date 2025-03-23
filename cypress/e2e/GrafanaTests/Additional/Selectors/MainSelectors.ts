@@ -1,5 +1,5 @@
 //Types from TypeSelectors
-import { TypeMainSelectors, TypeProfileSelectors } from "./TypesSelectors";
+import {TypeMainLinksSelectors, TypeMainSelectors, TypeProfileSelectors} from "./TypesSelectors";
 
 export const mainSelectors: TypeMainSelectors = {
      home : '[data-testid="data-testid Nav menu item"][href="/"]',
@@ -61,3 +61,7 @@ export const sections: string[] = [
     'Administration',
     'Plugins and data',
 ];
+
+export const mainLinksSelectors: TypeMainLinksSelectors = {
+    mainPageLinks : '[data-testid="data-testid panel content"]'
+}

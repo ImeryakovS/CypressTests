@@ -85,6 +85,12 @@ export const ProfileSelectorsKeys = [
 
 export type TypeProfileSelectors = Record<typeof ProfileSelectorsKeys[number], string>;
 
+export const TypeMainLinksSelectorsKeys = [
+    'mainPageLinks'
+] as const;
+
+export type TypeMainLinksSelectors = Record<typeof TypeMainLinksSelectorsKeys[number], string>;
+
 //Types for LoginSelectors
 
 export type TypeLoginSelectors = {
