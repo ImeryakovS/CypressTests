@@ -1,10 +1,10 @@
 import {externalLinkWelcome, mainLinksSelectors} from "../Selectors/MainSelectors";
-import {checkExternalLink} from "../Functions/ExternalLinksFunction";
+import {checkExternalLink, useFindFunction} from "../Functions/ExternalLinksFunction";
 
 export class ExternalLinks {
     static goToExternalLinks (): void {
         externalLinkWelcome.forEach(link =>
-             checkExternalLink({
+             checkExternalLink(useFindFunction,{
                  selector: mainLinksSelectors.mainPageLinks,
                  childIndex: 0,
                  htmlTag: 'a',

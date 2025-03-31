@@ -7,18 +7,20 @@ type ExternalLinkCheckOptions = {
     containWord: string;
 }
 
-export function checkExternalLink (options: ExternalLinkCheckOptions): void {
+export function useFindFunction (options: ExternalLinkCheckOptions): Cypress.Chainable<JQuery<HTMLElement>> {
     const {selector, childIndex, htmlTag, index, containWord } = options;
 
-    cy.get(selector)
+    return cy.get(selector)
         .eq(childIndex)
-        .within(():void => {
-            cy.get(htmlTag).eq(index).contains(containWord)
-                .then (link => {
-                    cy
-                        .request(link.prop('href'))
-                        .its('status')
-                        .should('eq',200);
-                })
-        })
+        .find(htmlTag)
+        .eq(index)
+        .contains(containWord)
 }
+export function checkExternalLink (Fn: (options: ExternalLinkCheckOptions) => Cypress.Chainable<JQuery<HTMLElement>>, options: ExternalLinkCheckOptions): void {
+                Fn(options).then ($el => {
+                    const href = $el.prop('href');
+                    expect(href,'Ссылка должна существовать').to.exist;
+                    cy.request(href).its('status').should('eq',200);
+                })
+}
+
