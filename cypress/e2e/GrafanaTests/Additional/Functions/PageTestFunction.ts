@@ -4,8 +4,9 @@ import { TypeLink } from './TypesFunctions'
 import { profileSelectors }  from '../Selectors/MainSelectors'
 
 export function randName ():string {
+    const timestamp:number = Date.now();
     const random = Math.floor(Math.random() * 10000);
-    return 'randTest' + random.toString();
+    return `test_${timestamp}_${random}`;
 }
 
 export function navigateAndVerify (selector: string,urlPart: string): void {
