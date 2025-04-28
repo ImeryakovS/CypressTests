@@ -1,30 +1,32 @@
 import requests
-
+import PythonTests.config.settings as settings
+import PythonTests.data.dashboards_data as data
 
 class ApiDashboardsService:
-    BASE_URL = "http://localhost:3000/"
-    BASIC_AUTH = ("admin","admin")
 
     @staticmethod
     def create_folder():
-        url = f'{ApiDashboardsService.BASE_URL}/api/folders'
+        url = f'{settings.BASE_URL}/api/folders'
         headers = {'Content-Type': 'application/json'}
-
-        response = requests.post(url, auth=ApiDashboardsService.BASIC_AUTH, json=credentials, headers=headers)
+        body = data.body_for_create_folder
+        response = requests.post(url,
+                                 auth=settings.BASIC_AUTH,
+                                 json = body,
+                                 headers=headers)
         assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
-        assert response.json().get('message') == 'User created', 'User not created'
+        assert response.json().get('title') == 'Folder for API Test'
 
-        return response.json().get('id')
+        return response.json().get('uid')
 
     @staticmethod
-    def delete_api_user(userid: int) -> None:
-        url = f'{ApiUsersService.BASE_URL}/api/admin/users/{userid}'
-
-        response = requests.delete(url, auth=ApiUsersService.BASIC_AUTH)
-
-        if response.status_code == 404:
-            print(f'User {userid} already deleted. Skipping deletion')
-            return
-
+    def create_dashboard(folder_uid:str):
+        url = f'{settings.BASE_URL}/api/dashboards/db'
+        headers = {'Content-Type': 'application/json'}
+        body = data.get_body_for_create_dashboard(folder_uid)
+        response = requests.post(url,
+                                 auth = settings.BASIC_AUTH,
+                                 json = body,
+                                 headers=headers)
         assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
-        assert response.json().get('message') == 'User deleted'
+
+        return response.json().get('uid')
