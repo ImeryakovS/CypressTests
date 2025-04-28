@@ -1,14 +1,16 @@
 import requests
-import PythonTests.config.settings as settings
 
-class ApiUsersService:
+
+class ApiDashboardsService:
+    BASE_URL = "http://localhost:3000/"
+    BASIC_AUTH = ("admin","admin")
 
     @staticmethod
-    def create_api_user(credentials: dict) -> int:
-        url = f'{settings.BASE_URL}/api/admin/users'
+    def create_folder():
+        url = f'{ApiDashboardsService.BASE_URL}/api/folders'
         headers = {'Content-Type': 'application/json'}
 
-        response = requests.post(url, auth=settings.BASIC_AUTH, json=credentials, headers=headers)
+        response = requests.post(url, auth=ApiDashboardsService.BASIC_AUTH, json=credentials, headers=headers)
         assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
         assert response.json().get('message') == 'User created', 'User not created'
 
@@ -16,9 +18,9 @@ class ApiUsersService:
 
     @staticmethod
     def delete_api_user(userid: int) -> None:
-        url = f'{settings.BASE_URL}/api/admin/users/{userid}'
+        url = f'{ApiUsersService.BASE_URL}/api/admin/users/{userid}'
 
-        response = requests.delete(url, auth=settings.BASIC_AUTH)
+        response = requests.delete(url, auth=ApiUsersService.BASIC_AUTH)
 
         if response.status_code == 404:
             print(f'User {userid} already deleted. Skipping deletion')
