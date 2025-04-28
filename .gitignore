@@ -20,5 +20,8 @@ PythonTests/__pycache__
 PythonTests/services/__pycache__
 PythonTests/tests/__pycache__
 
+#Virtual python env
+venv/
+
 #Python cache files
 *.pyc
