@@ -63,3 +63,11 @@ While test execution is currently available only for me, you can view the result
 All CI settings are located in [ci.yml](./.github/workflows/ci.yml)
 
 ---
+
+## Python tests
+
+Steps for install:
+1. Install Python (from scoop): `scoop install python`
+2. Activate virtual environment: `venv\Scripts'activate`
+3. Install pytest: `pip install pytest`
+4. Install dependencies: `pip install -r requirements.txt`
