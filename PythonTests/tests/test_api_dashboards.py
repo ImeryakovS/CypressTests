@@ -14,4 +14,8 @@ def test_create_dashboard_in_folder():
     dashboard_uid = ApiDashboardsService.create_dashboard()
     assert dashboard_uid is not None
 
+@pytest.mark.api
+def test_delete_dashboard_in_folder():
 
+    dashboard_uid = ApiDashboardsService.delete_dashboard()
+    assert dashboard_uid is True
