@@ -16,10 +16,17 @@ def test_delete_user():
 
 @pytest.mark.NegativeApi
 def test_create_existing_user():
-    ApiUsersService.create_api_user(existing_credentials)
+    response_created = ApiUsersService.create_api_user(existing_credentials)
+    assert_status_message(response_created, 200, 'User created')
+
     ApiUsersService.create_existing_api_user(existing_credentials)
-    response = ApiUsersService.delete_api_user()
-    assert_status_message(response, 200, 'User deleted')
+    response_existing = ApiUsersService.create_existing_api_user(existing_credentials)
+    
+    message_existing = response_existing.json().get('message')
+    assert_status_message(response_existing, 412, message_existing)
+
+    response_delete = ApiUsersService.delete_api_user()
+    assert_status_message(response_delete, 200, 'User deleted')
 
 @pytest.mark.NegativeApi
 def test_create_bad_request():

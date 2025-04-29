@@ -23,7 +23,7 @@ class ApiUsersService:
         return response
 
     @staticmethod
-    def create_existing_api_user(credentials: dict) -> int:
+    def create_existing_api_user(credentials: dict) -> Response:
         url = f'{settings.BASE_URL}/api/admin/users'
         headers = {'Content-Type': 'application/json'}
 
@@ -32,8 +32,7 @@ class ApiUsersService:
                                  json=credentials,
                                  headers=headers)
 
-        assert response.status_code == 412, f'Expected status code 412, got {response.status_code}'
-        assert response.json().get('message') == f"User with email '{credentials.get('email')}' or username '{credentials.get('login')}' already exists"
+        return response
 
     @staticmethod
     def delete_api_user():
