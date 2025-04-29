@@ -25,3 +25,7 @@ venv/
 
 #Python cache files
 *.pyc
+
+#JSONs
+
+PythonTests/data/dashboards.json

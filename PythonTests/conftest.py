@@ -11,9 +11,9 @@ def created_user():
     yield user_id
     ApiUsersService.delete_api_user(user_id)
 
-@pytest.fixture
-def created_folder_for_dashboard():
-    folder_uid = ApiDashboardsService.create_folder()
-    yield folder_uid
+# @pytest.fixture
+# def created_folder_for_dashboard():
+#     folder_uid = ApiDashboardsService.create_folder()
+#     yield folder_uid
 
 
