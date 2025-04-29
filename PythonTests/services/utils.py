@@ -24,3 +24,7 @@ def read_value_in_json(file_path, json_value):
     logging.info(f'Function: {inspect.currentframe().f_code.co_name}, {json_value}: {saved_value}')
 
     return saved_value
+
+def assert_status_message(response, expected_status, expected_message):
+    assert response.status_code == expected_status, f'Expected {expected_status}, got {response.status_code}'
+    assert response.json().get('message') == expected_message
