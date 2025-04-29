@@ -1,5 +1,6 @@
 import requests
 import PythonTests.config.settings as settings
+from PythonTests.services.utils import write_value_in_json, read_value_in_json
 
 class ApiUsersService:
 
@@ -12,12 +13,17 @@ class ApiUsersService:
         assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
         assert response.json().get('message') == 'User created', 'User not created'
 
-        return response.json().get('id')
+        user_id = response.json().get('id')
+
+        write_value_in_json('./data/users.json', user_id,'userId')
+
+        return user_id
 
     @staticmethod
-    def delete_api_user(userid: int) -> None:
-        url = f'{settings.BASE_URL}/api/admin/users/{userid}'
+    def delete_api_user():
+        userid = read_value_in_json('./data/users.json', 'userId')
 
+        url = f'{settings.BASE_URL}/api/admin/users/{userid}'
         response = requests.delete(url, auth=settings.BASIC_AUTH)
 
         if response.status_code == 404:
@@ -26,3 +32,7 @@ class ApiUsersService:
 
         assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
         assert response.json().get('message') == 'User deleted'
+
+        return True
+
+
