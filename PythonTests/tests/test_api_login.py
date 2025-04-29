@@ -1,16 +1,38 @@
 import pytest
 
-from PythonTests.data.users_credentials import credentials
+from PythonTests.data.users_credentials import credentials, existing_credentials
 from PythonTests.services.api_users_service import ApiUsersService
 
 
-@pytest.mark.api
+@pytest.mark.PostiveApi
 def test_create_user():
-    user_id = ApiUsersService.create_api_user(credentials)
-    assert user_id is not None
+    response = ApiUsersService.create_api_user(credentials)
 
-@pytest.mark.api
+    assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
+    assert response.json().get('message') == 'User created', 'User not created'
+
+
+@pytest.mark.PostiveApi
 def test_delete_user():
-    user_deleted = ApiUsersService.delete_api_user()
-    assert user_deleted is True
+    response = ApiUsersService.delete_api_user()
+
+    assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
+    assert response.json().get('message') == 'User deleted'
+
+@pytest.mark.NegativeApi
+def test_create_existing_user():
+    ApiUsersService.create_api_user(existing_credentials)
+    ApiUsersService.create_existing_api_user(existing_credentials)
+    response = ApiUsersService.delete_api_user()
+
+    assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
+    assert response.json().get('message') == 'User deleted'
+
+@pytest.mark.NegativeApi
+def test_create_bad_request():
+    response = ApiUsersService.create_bad_request()
+    assert response.status_code == 400, f'Expected status code 400, got {response.status_code}'
+    assert response.json().get('message') == 'bad request data'
+
+
 

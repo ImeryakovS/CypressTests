@@ -7,3 +7,10 @@ credentials =   {
     'login' : f'Sergey{rand}',
     'password' : 'password123'
 }
+
+existing_credentials = {
+    'name' : 'SergeySergey',
+    'email' : 'SergeySergey@test.ru',
+    'login' : 'SergeySergey',
+    'password' : 'test123'
+}

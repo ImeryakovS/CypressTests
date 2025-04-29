@@ -60,9 +60,31 @@ class ApiDashboardsService:
         response = requests.delete(url,
                                    auth = settings.BASIC_AUTH,
                                    headers = headers)
+        if response.status_code == 404:
+            print(f'User {dashboard_uid} already deleted. Skipping deletion')
+            return
 
         assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
         assert response.json().get('title') == title
         assert response.json().get('message') == f'Dashboard {title} deleted'
+
+        return True
+
+    @staticmethod
+    def delete_folder_for_dashboard():
+        folder_uid = read_value_in_json('./data/dashboards.json', 'folderUid')
+
+        url = f'{settings.BASE_URL}/api/folders/{folder_uid}'
+
+        headers = {'Content-Type': 'application/json'}
+        response = requests.delete(url,
+                                   auth = settings.BASIC_AUTH,
+                                   headers = headers)
+        if response.status_code == 404:
+            print(f'User {folder_uid} already deleted. Skipping deletion')
+            return
+
+        assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
+        assert response.json().get('message') == 'Folder deleted'
 
         return True
