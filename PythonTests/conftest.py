@@ -1,19 +1,15 @@
 import pytest
+import shutil
+import os
 
-from PythonTests.data.users_credentials import credentials
-from PythonTests.services.api_dashboards_service import ApiDashboardsService
-from PythonTests.services.api_users_service import ApiUsersService
+@pytest.fixture(scope="session", autouse=True)
+def create_users_jsons():
+    if not os.path.exists('./data/users.json'):
+        shutil.copy('./data/users.template.json', './data/users.json')
 
-
-# @pytest.fixture
-# def created_user():
-#     user_id = ApiUsersService.create_api_user(credentials)
-#     yield user_id
-#     ApiUsersService.delete_api_user(user_id)
-
-# @pytest.fixture
-# def created_folder_for_dashboard():
-#     folder_uid = ApiDashboardsService.create_folder()
-#     yield folder_uid
+@pytest.fixture(scope="session",autouse=True)
+def create_dashboards_jsons():
+    if not os.path.exists('./data/dashboards.json'):
+        shutil.copy('./data/dashboards.template.json', './data/dashboards.json')
 
 
