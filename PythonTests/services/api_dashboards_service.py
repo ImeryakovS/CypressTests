@@ -17,14 +17,12 @@ class ApiDashboardsService:
                                  auth=settings.BASIC_AUTH,
                                  json = body,
                                  headers=headers)
-        assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
-        assert response.json().get('title') == 'Folder for API Test'
 
         folder_uid = response.json().get('uid')
 
         write_value_in_json('./data/dashboards.json', folder_uid, 'folderUid')
 
-        return folder_uid
+        return response
 
     @staticmethod
     def create_dashboard():
@@ -38,12 +36,11 @@ class ApiDashboardsService:
                                  auth = settings.BASIC_AUTH,
                                  json = body,
                                  headers=headers)
-        assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
 
         dashboard_uid = response.json().get('uid')
 
         write_value_in_json('./data/dashboards.json', dashboard_uid, 'dashboardUid')
-        return dashboard_uid
+        return response
 
     @staticmethod
     def delete_dashboard():
@@ -61,14 +58,10 @@ class ApiDashboardsService:
                                    auth = settings.BASIC_AUTH,
                                    headers = headers)
         if response.status_code == 404:
-            print(f'User {dashboard_uid} already deleted. Skipping deletion')
-            return
+            logging.warning(f'User {dashboard_uid} already deleted. Skipping deletion')
+            return response,title
 
-        assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
-        assert response.json().get('title') == title
-        assert response.json().get('message') == f'Dashboard {title} deleted'
-
-        return True
+        return response,title
 
     @staticmethod
     def delete_folder_for_dashboard():
@@ -81,10 +74,7 @@ class ApiDashboardsService:
                                    auth = settings.BASIC_AUTH,
                                    headers = headers)
         if response.status_code == 404:
-            print(f'User {folder_uid} already deleted. Skipping deletion')
-            return
+            logging.warning(f'User {folder_uid} already deleted. Skipping deletion')
+            return  response
 
-        assert response.status_code == 200, f'Expected status code 200, got {response.status_code}'
-        assert response.json().get('message') == 'Folder deleted'
-
-        return True
+        return response
