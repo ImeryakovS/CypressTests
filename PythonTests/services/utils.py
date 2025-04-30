@@ -2,6 +2,9 @@ import json
 import logging
 import inspect
 
+from PythonTests.data.dashboards_data import get_body_for_create_dashboard
+
+
 def write_value_in_json(file_path, saved_value, json_value):
     with open(file_path, 'r') as file:
         json_file = json.load(file)
@@ -28,3 +31,10 @@ def read_value_in_json(file_path, json_value):
 def assert_status_message(response, expected_status, expected_message):
     assert response.status_code == expected_status, f'Expected {expected_status}, got {response.status_code}'
     assert response.json().get('message') == expected_message
+
+def extract_value_in_object(key):
+    body = get_body_for_create_dashboard('get')
+    key = body['dashboard'][key]
+
+    return key
+

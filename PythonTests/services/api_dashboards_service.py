@@ -3,7 +3,7 @@ import PythonTests.config.settings as settings
 import PythonTests.data.dashboards_data as data
 import logging
 
-from PythonTests.services.utils import write_value_in_json, read_value_in_json
+from PythonTests.services.utils import write_value_in_json, read_value_in_json, extract_value_in_object
 
 
 class ApiDashboardsService:
@@ -43,15 +43,67 @@ class ApiDashboardsService:
         return response
 
     @staticmethod
+    def get_dashboard():
+        dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
+        url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
+        headers = {'Content-Type': 'application/json'}
+        logging.info(f'Get dashboard uid: {dashboard_uid}')
+
+        title = extract_value_in_object('title')
+
+        response = requests.get(url,
+                                auth=settings.BASIC_AUTH,
+                                headers=headers)
+        return response, title
+
+    @staticmethod
+    def get_dashboard_with_incorrect_auth():
+        dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
+        url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
+        headers = {'Content-Type': 'application/json'}
+        logging.info(f'Get dashboard uid: {dashboard_uid}')
+
+        response = requests.get(url,
+                                auth=('admin2','admin2'),
+                                headers=headers)
+        logging.info(f'Get status code: {response.status_code}')
+        return response
+
+    @staticmethod
+    def get_dashboard_with_low_level_access():
+        dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
+        url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
+        headers = {'Content-Type': 'application/json'}
+        logging.info(f'Get dashboard uid: {dashboard_uid}')
+
+        response = requests.get(url,
+                                auth=settings.LOW_ACCESS,
+                                headers=headers)
+        logging.info(f'Get status code: {response.status_code}')
+        return response
+
+    @staticmethod
+    def get_404_dashboard():
+        dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
+        dashboard_uid += '12'
+        url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
+        headers = {'Content-Type': 'application/json'}
+        logging.info(f'Get dashboard uid: {dashboard_uid}')
+
+        response = requests.get(url,
+                                auth=settings.BASIC_AUTH,
+                                headers=headers)
+        logging.info(f'Get status code: {response.status_code}')
+        return response
+
+    @staticmethod
     def delete_dashboard():
         dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
 
         url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
 
         headers = {'Content-Type': 'application/json'}
-
-        body = data.get_body_for_create_dashboard('get_title')
-        title = body['dashboard']['title']
+        title = extract_value_in_object('title')
 
         logging.info(f'title: {title}')
         response = requests.delete(url,

@@ -14,3 +14,10 @@ existing_credentials = {
     'login' : 'SergeySergey',
     'password' : 'test123'
 }
+
+low_access_credentials = {
+    'name' : 'LowAccess',
+    'email' : 'LowAccess@test.ru',
+    'login' : 'LowAccess',
+    'password' : 'test'
+}
