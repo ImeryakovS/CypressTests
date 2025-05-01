@@ -5,13 +5,14 @@ from requests import Response
 import logging
 
 import PythonTests.config.settings as settings
-from PythonTests.helpers.decorators import api_error_handler
+from PythonTests.helpers.decorators import api_error_handler, retry
 from PythonTests.services.utils import write_value_in_json, read_value_in_json
 
 class ApiUsersService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def create_api_user(credentials: dict) -> Response:
         url = f'{settings.BASE_URL}/api/admin/users'
         headers = {'Content-Type': 'application/json'}
@@ -31,6 +32,7 @@ class ApiUsersService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def find_user_by_login(login: str) -> int:
         url = f'{settings.BASE_URL}/api/users/lookup?loginOrEmail={login}'
         headers = {'Content-Type': 'application/json'}
@@ -48,6 +50,7 @@ class ApiUsersService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def delete_api_user(userid=None):
         if userid is None:
             userid = read_value_in_json('./data/users.json', 'userId')
@@ -66,6 +69,7 @@ class ApiUsersService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def create_bad_request():
         url = f'{settings.BASE_URL}/api/admin/users'
         headers = {'Content-Type': 'application/json'}

@@ -3,7 +3,7 @@ import PythonTests.config.settings as settings
 import PythonTests.data.dashboards_data as data
 import logging
 
-from PythonTests.helpers.decorators import api_error_handler
+from PythonTests.helpers.decorators import api_error_handler, retry
 from PythonTests.services.utils import write_value_in_json, read_value_in_json, extract_value_in_object
 
 
@@ -11,6 +11,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def create_folder():
         url = f'{settings.BASE_URL}/api/folders'
         headers = {'Content-Type': 'application/json'}
@@ -29,6 +30,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def create_dashboard():
         url = f'{settings.BASE_URL}/api/dashboards/db'
         headers = {'Content-Type': 'application/json'}
@@ -49,6 +51,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def get_dashboard():
         dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
         url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
@@ -65,6 +68,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def get_dashboard_with_incorrect_auth():
         dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
         url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
@@ -80,6 +84,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def get_dashboard_with_low_level_access():
         dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
         url = f'{settings.BASE_URL}/api/dashboards/uid/{dashboard_uid}'
@@ -95,6 +100,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def get_404_dashboard():
         dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
         dashboard_uid += '12'
@@ -111,6 +117,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def delete_dashboard():
         dashboard_uid = read_value_in_json('./data/dashboards.json', 'dashboardUid')
 
@@ -132,6 +139,7 @@ class ApiDashboardsService:
 
     @staticmethod
     @api_error_handler
+    @retry(3)
     def delete_folder_for_dashboard():
         folder_uid = read_value_in_json('./data/dashboards.json', 'folderUid')
 
