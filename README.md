@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/ImeryakovS/CypressTests/actions/workflows/ci.yml/badge.svg)](https://github.com/ImeryakovS/CypressTests/actions)
 ![Cypress](https://img.shields.io/badge/cypress-12.14.0-brightgreen)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 This is an automated testing project for **Grafana**, built with **Cypress** and **TypeScript**.  
 It serves as a public demonstration of my automation testing skills.

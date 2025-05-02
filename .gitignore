@@ -6,3 +6,11 @@ cypress/screenshots/
 cypress/videos/
 /python_summary/
 /Main.ts
+
+PythonTests/data
+PythonTests/config/__pycache__
+PythonTests/data/__pycache__
+PythonTests/__pycache__
+PythonTests/helpers/__pycache__
+PythonTests/services/__pycache__
+PythonTests/tests/__pycache__
